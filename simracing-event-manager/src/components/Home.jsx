@@ -22,19 +22,16 @@ export default function Home() {
             </Col>
         </Row>
         <Row className="mx-4">
-            <Col>
             <EventCard />
-            </Col>
-            <Col>
             <EventCard />
-            </Col><Col>
             <EventCard />
-            </Col><Col>
             <EventCard />
-            </Col>
-            <Col>
             <EventCard />
-            </Col>
+            <EventCard />
+            <EventCard />
+            <EventCard />
+            <EventCard />
+            <EventCard />
         </Row>
         </>
     );

@@ -1,7 +1,8 @@
-import { Card, ListGroup } from 'react-bootstrap';
+import { Card, Col, ListGroup } from 'react-bootstrap';
 
 export default function EventCard() {
     return (
+        <Col className="my-3">
         <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-zgQ0O12LZbC42tBJLT4v7RMRYh9TxxDDw&s" />
       <Card.Body>
@@ -21,5 +22,6 @@ export default function EventCard() {
         <Card.Link href="#">Another Link</Card.Link>
       </Card.Body>
     </Card>
+        </Col>
     );
 }
