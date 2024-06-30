@@ -12,6 +12,8 @@ export default function NavigationBar() {
             <Nav.Link as={Link} to="/">Home</Nav.Link>
             <Nav.Link as={Link} to="/events">Events</Nav.Link>
             <Nav.Link as={Link} to="/teams">Teams</Nav.Link>
+            <Nav.Link as={Link} to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} to="/register">Register</Nav.Link>
 
             <NavDropdown
               id="nav-dropdown-dark-example"
