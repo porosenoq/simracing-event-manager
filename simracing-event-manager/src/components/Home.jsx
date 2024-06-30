@@ -17,7 +17,7 @@ export default function Home() {
                 <Link to="/register" className="link">Sign up</Link> and race alongside sim racers around the globe!
             </Col>
         </Row>
-        <Row className="mx-0 my-5">
+        <Row className="mx-0 my-3">
             <Col>
                 <h2>Upcoming events:</h2>
             </Col>
