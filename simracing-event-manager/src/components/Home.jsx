@@ -35,7 +35,7 @@ export default function Home() {
          <Row className="mx-0">
             <div className='container my-3'>
                 <Link to="/events">
-         <Button className="btn-lg mx-3" variant="dark">Check out all events</Button>
+         <Button className="btn-lg mx-3" variant="warning">Check out all the events</Button>
          </Link>
             </div>
          </Row>

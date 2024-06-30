@@ -8,9 +8,7 @@ export default function NavigationBar() {
       <Navbar bg="dark" data-bs-theme="dark">
         <Container>
           <Navbar.Brand href="#home">
-            <a href="http://twitch.tv/bezracingteam">
           <Image className="logoPic mx-3" src="https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj" />
-          </a>
             Simracing Event Manager
             </Navbar.Brand>
           <Nav className="me-auto">
