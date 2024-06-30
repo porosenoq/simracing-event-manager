@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -18,6 +19,8 @@ export default function Login() {
     const [errors, setErrors] = useState('');
 
   return (
+    <Row className="mx-0">
+      <Col md={4} className='container py-5'>
     <Form onSubmit={submitHandler}>
       <Form.Group className="mb-3" controlId="formBasicEmail">
         <Form.Label>Email address</Form.Label>
@@ -38,5 +41,7 @@ export default function Login() {
         Submit
       </Button>
     </Form>
+      </Col>
+    </Row>
   );
 }
