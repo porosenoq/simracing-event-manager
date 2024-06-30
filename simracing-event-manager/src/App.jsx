@@ -6,6 +6,7 @@ import Events from './components/Events'
 import Teams from './components/Teams'
 import Drivers from './components/Drivers'
 import Login from './components/Login'
+import NotFound from './components/NotFound'
 
 function App() {
 
@@ -16,10 +17,11 @@ function App() {
       <main className="text-light">
         <Routes>
           <Route index path="/" element={<Home />}/>
-          <Route index path="/events" element={<Events />}/>
-          <Route index path="/teams" element={<Teams />}/>
-          <Route index path="/drivers" element={<Drivers />}/>
-          <Route index path="/login" element={<Login />}/>
+          <Route path="/events" element={<Events />}/>
+          <Route path="/teams" element={<Teams />}/>
+          <Route path="/drivers" element={<Drivers />}/>
+          <Route path="/login" element={<Login />}/>
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
     </>

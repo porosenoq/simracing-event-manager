@@ -21,7 +21,7 @@ export default function Home() {
                 <h2>Upcoming events:</h2>
             </Col>
         </Row>
-        <Row>
+        <Row className="mx-4">
             <Col>
             <EventCard />
             </Col>
