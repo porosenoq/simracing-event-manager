@@ -2,6 +2,8 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 
 export default function Register() {
     return (
+        <>
+        <h2>Register:</h2>
         <Row className="mx-0">
         <Col md={4} className='container py-5'>
       <Form >
@@ -35,5 +37,6 @@ export default function Register() {
       </Form>
         </Col>
       </Row>
+      </>
     );
 }

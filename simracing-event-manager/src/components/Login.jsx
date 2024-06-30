@@ -19,6 +19,8 @@ export default function Login() {
     const [errors, setErrors] = useState('');
 
   return (
+    <>
+    <h2>Login:</h2>
     <Row className="mx-0">
       <Col md={4} className='container py-5'>
     <Form onSubmit={submitHandler}>
@@ -43,5 +45,6 @@ export default function Login() {
     </Form>
       </Col>
     </Row>
+    </>
   );
 }

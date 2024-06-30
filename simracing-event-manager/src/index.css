@@ -7,6 +7,16 @@ body {
   height: 35px;
 }
 
+.logoPic {
+  width: 40px;
+  height: 40px;
+}
+
+.link {
+  font-weight: bold;
+  color: orange
+}
+
 .navbarRight {
   position: absolute;
   right: 40px;

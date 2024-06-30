@@ -1,4 +1,4 @@
-import { Col, Row } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import EventCard from './EventCard';
 
@@ -12,8 +12,9 @@ export default function Home() {
         </Row>
         <Row className="text-light mx-0">
             <Col>
-                Check out our <Link to="/events">events!</Link>
-                Sign up and race alongside sim racers around the globe!
+                Check out our <Link className="link" to="/events">events!</Link>
+                <br />
+                <Link to="/register" className="link">Sign up</Link> and race alongside sim racers around the globe!
             </Col>
         </Row>
         <Row className="mx-0 my-5">
@@ -21,18 +22,23 @@ export default function Home() {
                 <h2>Upcoming events:</h2>
             </Col>
         </Row>
+
         <Row className="mx-4">
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-            <EventCard />
-        </Row>
+
+        {/* must display recent 4 */}
+
+            <EventCard title={'24h of Imola GT3'}/>
+            <EventCard title={'3h of Spa Francorchamp'}/>
+            <EventCard title={'Nurburging Endurance race 6h'}/>
+            <EventCard title={'Brands Hatch Sprint Race'}/>
+         </Row>
+         <Row className="mx-0">
+            <div className='container my-3'>
+                <Link to="/events">
+         <Button className="btn-lg mx-3" variant="dark">Check out all events</Button>
+         </Link>
+            </div>
+         </Row>
         </>
     );
 }

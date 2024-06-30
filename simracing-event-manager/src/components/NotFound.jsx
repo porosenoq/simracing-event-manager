@@ -3,7 +3,7 @@ import { Button } from 'react-bootstrap';
 export default function NotFound() {
     return(
         <>
-            <div className="container">
+            <div className="container my-5">
     <div className="row">
         <div className="col-md-12">
             <div className="error-template">

@@ -10,7 +10,7 @@ export default function Footer() {
       <li className="nav-item"><a href="#" className="nav-link px-2 ">FAQs</a></li>
       <li className="nav-item"><a href="#" className="nav-link px-2 ">About</a></li>
     </ul>
-    <p className="text-center">© 2024 Simracing Event Manager</p>
+    <p className="text-center">Bez Racing Team © 2024 Simracing Event Manager</p>
   </footer>
 </div>
         </>

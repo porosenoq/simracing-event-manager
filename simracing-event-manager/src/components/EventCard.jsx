@@ -1,12 +1,12 @@
 import { Card, Col, ListGroup } from 'react-bootstrap';
 
-export default function EventCard() {
+export default function EventCard({title}) {
     return (
-        <Col className="my-3">
-        <Card style={{ width: '18rem' }}>
+        <Col md={3} className="my-3">
+        <Card className="bg-" style={{ width: '20rem' }}>
       <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-zgQ0O12LZbC42tBJLT4v7RMRYh9TxxDDw&s" />
       <Card.Body>
-        <Card.Title>Card Title</Card.Title>
+        <Card.Title>{title}</Card.Title>
         <Card.Text>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
