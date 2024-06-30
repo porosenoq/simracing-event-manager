@@ -5,6 +5,7 @@ import Teams from './Teams';
 import Drivers from './Drivers';
 import Login from './Login';
 import NotFound from './NotFound';
+import Register from './Register';
 
 export default function MainContent() {
     return (
@@ -15,6 +16,7 @@ export default function MainContent() {
           <Route path="/teams" element={<Teams />}/>
           <Route path="/drivers" element={<Drivers />}/>
           <Route path="/login" element={<Login />}/>
+          <Route path="/register" element={<Register />}/>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>
