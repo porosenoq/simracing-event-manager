@@ -1,3 +1,13 @@
 body {
   background-color: rgb(75, 75, 75);
 }
+
+.profilePic {
+  width: 35px;
+  height: 35px;
+}
+
+.navbarRight {
+  position: absolute;
+  right: 40px;
+}

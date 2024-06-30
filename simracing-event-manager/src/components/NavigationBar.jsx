@@ -1,4 +1,4 @@
-import { Container, Nav, NavDropdown } from 'react-bootstrap';
+import { Col, Container, Image, Nav, NavDropdown, Row} from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
 
@@ -15,7 +15,7 @@ export default function NavigationBar() {
 
             <NavDropdown
               id="nav-dropdown-dark-example"
-              title="Dropdown"
+              title="Menu"
               menuVariant="dark"
             >
               <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
@@ -28,6 +28,26 @@ export default function NavigationBar() {
                 Separated link
               </NavDropdown.Item>
             </NavDropdown>
+
+
+        <Row className="navbarRight">
+          <Col className="text-light d-flex align-items-center">
+          <NavDropdown
+              id="nav-dropdown-dark-example"
+              title="{Username placeholder}"
+              menuVariant="dark"
+            >
+              <NavDropdown.Item href="#action/3.1">Edit</NavDropdown.Item>
+              <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
+              <NavDropdown.Divider />
+              <NavDropdown.Item href="#action/3.4">Sign out</NavDropdown.Item>
+            </NavDropdown>
+          </Col>
+         
+          <Col>
+        <Image className="profilePic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" roundedCircle />
+          </Col>
+        </Row>
             
           </Nav>
         </Container>

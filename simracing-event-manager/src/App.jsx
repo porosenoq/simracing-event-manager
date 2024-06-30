@@ -12,6 +12,8 @@ function App() {
   return (
     <>
       <NavigationBar />
+
+      <main className="text-light">
         <Routes>
           <Route index path="/" element={<Home />}/>
           <Route index path="/events" element={<Events />}/>
@@ -19,6 +21,7 @@ function App() {
           <Route index path="/drivers" element={<Drivers />}/>
           <Route index path="/login" element={<Login />}/>
         </Routes>
+      </main>
     </>
   )
 }
