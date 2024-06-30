@@ -15,19 +15,19 @@ export default function Register() {
           </Form.Text>
         </Form.Group>
   
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="password">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" placeholder="Password" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3" controlId="check1">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
-        <Form.Group className="mb-3" controlId="formBasicPassword">
+        <Form.Group className="mb-3" controlId="repass">
           <Form.Label>Repeat password</Form.Label>
           <Form.Control type="password" placeholder="Repeat password" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+        <Form.Group className="mb-3" controlId="check2">
           <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
