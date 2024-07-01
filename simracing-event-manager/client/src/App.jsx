@@ -1,7 +1,7 @@
 import './App.css';
 
 import { useState } from 'react';
-import { login } from './services/authService';
+import { login, register } from './services/authService';
 import { useNavigate } from 'react-router-dom';
 
 import Footer from './components/Footer';
@@ -34,9 +34,27 @@ function App() {
     }
   }
 
+  async function registerSubmitHandler(e) {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    const email = formData.get("email");
+    const password = formData.get("password");
+    const repass = formData.get("repass");
+
+   
+    try {
+      const user = await register(email, password);
+      setAuth(user);
+      localStorage.setItem('user', user.accessToken);
+      navigate('/');
+    } catch(err) {
+      alert(err.message);
+    }
+  }
+
   return (
     <>
-    <AuthContext.Provider value={{loginSubmitHandler, auth}}>
+    <AuthContext.Provider value={{loginSubmitHandler, registerSubmitHandler, auth}}>
       <NavigationBar user={auth}/>
 
       <MainContent />
