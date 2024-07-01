@@ -12,9 +12,10 @@ export default function Home() {
         </Row>
         <Row className="text-light mx-0">
             <Col>
-                Check out our <Link className="link" to="/events">events!</Link>
+                Check out all the upcoming <Link className="link" to="/events">events!</Link>
                 <br />
-                <Link to="/register" className="link">Sign up</Link> and race alongside sim racers around the globe!
+                {!localStorage.getItem("user") ? <><Link to="/register" className="link">Sign up</Link> and race alongside sim racers around the globe!</> : null}
+                
             </Col>
         </Row>
         <Row className="mx-0 my-3">
@@ -35,7 +36,7 @@ export default function Home() {
          <Row className="mx-0">
             <div className='container my-3'>
                 <Link to="/events">
-         <Button className="btn-lg mx-3" variant="warning">Check out all the events</Button>
+         <Button className="btn-lg mx-3" variant="warning">Check out all upcoming events</Button>
          </Link>
             </div>
          </Row>

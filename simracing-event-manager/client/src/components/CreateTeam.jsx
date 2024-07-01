@@ -3,7 +3,7 @@ import { Button, Col, Form, Row } from 'react-bootstrap';
 export default function CreateTeam() {
     return (
         <>
-    <h2>Login:</h2>
+    <h2>Create team:</h2>
     <Row className="mx-0">
       <Col md={4} className='container py-5'>
     <Form>
@@ -19,9 +19,6 @@ export default function CreateTeam() {
       <Form.Group className="mb-3" controlId="formBasicPassword">
         <Form.Label>Team avatar</Form.Label>
         <Form.Control type="password" name="password" placeholder="URL to team avatar image" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       <Button variant="warning" type="submit">
         Login
