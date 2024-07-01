@@ -9,6 +9,7 @@ import Register from './Register';
 import { ProtectedRoute } from './ProtectedRoute';
 import CreateTeam from './CreateTeam';
 import CreateEvent from './CreateEvent';
+import EventDetails from './EventDetails';
 
 export default function MainContent() {
     return (
@@ -16,6 +17,7 @@ export default function MainContent() {
         <Routes>
           <Route index path="/" element={<Home />}/>
           <Route path="/events" element={<Events />}/>
+          <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
           <Route path="/drivers" element={<Drivers />}/>
           <Route path="/login" element={<Login />}/>

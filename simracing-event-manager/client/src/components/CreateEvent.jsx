@@ -11,7 +11,6 @@ export default function CreateEvent() {
         <Form.Label>Event name</Form.Label>
         <Form.Control type="email" name="email" placeholder="Enter event name" />
         <Form.Text className="text-muted">
-          Show errors here
           {/*{errors ? errors : null}*/}
         </Form.Text>
       </Form.Group>
@@ -105,7 +104,7 @@ export default function CreateEvent() {
       </Form.Group>
 
       <Button variant="warning" type="submit">
-        Login
+        Create event
       </Button>
     </Form>
       </Col>

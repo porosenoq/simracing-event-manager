@@ -21,7 +21,7 @@ export default function CreateTeam() {
         <Form.Control type="password" name="password" placeholder="URL to team avatar image" />
       </Form.Group>
       <Button variant="warning" type="submit">
-        Login
+        Create team
       </Button>
     </Form>
       </Col>
