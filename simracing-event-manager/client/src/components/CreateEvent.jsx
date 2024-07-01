@@ -1,8 +1,9 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
+import { create } from '../services/eventService';
 
 export default function CreateEvent() {
 
-    const submitHandler = (e) => {
+    const submitHandler = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.target);
         const eventData = Object.fromEntries(formData);
@@ -10,6 +11,8 @@ export default function CreateEvent() {
         eventData.category = eventCategories;
 
         console.log(eventData);
+        const result = await create(eventData);
+        console.log(result);
         // we need to pass eventData to the function that will create the event in the backend
     }
     return (
