@@ -6,6 +6,9 @@ import Drivers from './Drivers';
 import Login from './Login';
 import NotFound from './NotFound';
 import Register from './Register';
+import { ProtectedRoute } from './ProtectedRoute';
+import CreateTeam from './CreateTeam';
+import CreateEvent from './CreateEvent';
 
 export default function MainContent() {
     return (
@@ -17,6 +20,10 @@ export default function MainContent() {
           <Route path="/drivers" element={<Drivers />}/>
           <Route path="/login" element={<Login />}/>
           <Route path="/register" element={<Register />}/>
+            <Route element={<ProtectedRoute />}>
+              <Route path="/teams/create" element={<CreateTeam />} />
+              <Route path="/events/create" element={<CreateEvent />} />
+            </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

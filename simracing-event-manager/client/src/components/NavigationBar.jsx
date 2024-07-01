@@ -19,15 +19,41 @@ export default function NavigationBar() {
             </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/">Home</Nav.Link>
-            <Nav.Link as={Link} to="/events">Events</Nav.Link>
-            <Nav.Link as={Link} to="/teams">Teams</Nav.Link>
+            {auth.email ? 
+              <>
+                <NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title="Events"
+                  menuVariant="dark"
+                >
+                  <NavDropdown.Item as={Link} to="/events/me">My events</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/events/create">
+                    Create event
+                  </NavDropdown.Item>                  
+                  <NavDropdown.Item as={Link} to="/events">Show all events</NavDropdown.Item>
+                </NavDropdown>
+                <NavDropdown
+                  id="nav-dropdown-dark-example"
+                  title="Teams"
+                  menuVariant="dark"
+                >
+                  <NavDropdown.Item as={Link} to="/teams/me">My teams</NavDropdown.Item>
+                  <NavDropdown.Item as={Link} to="/teams/create">
+                    Create team
+                  </NavDropdown.Item>                  
+                  <NavDropdown.Item as={Link} to="/teams">Browse Teams</NavDropdown.Item>
+                </NavDropdown>
+              </> 
+              : <><Nav.Link as={Link} to="/events">Events</Nav.Link><Nav.Link as={Link} to="/teams">Teams</Nav.Link></>
+            
+            }
             {!auth.email ? 
             <>
             <Nav.Link as={Link} to="/login">Login</Nav.Link>
             <Nav.Link as={Link} to="/register">Register</Nav.Link>
             </>
             : null}
-            
+
             <NavDropdown
               id="nav-dropdown-dark-example"
               title="Menu"

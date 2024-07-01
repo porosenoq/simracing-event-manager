@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react';
+import { useContext } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,7 @@ export default function Login() {
   
   const {loginSubmitHandler} = useContext(AuthContext);
     
-  const [errors, setErrors] = useState('');
+  //const [errors, setErrors] = useState('');
 
   return (
     <>
@@ -21,7 +21,8 @@ export default function Login() {
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" name="email" placeholder="Enter email" />
         <Form.Text className="text-muted">
-          {errors ? errors : null}
+          Show errors here
+          {/*{errors ? errors : null}*/}
         </Form.Text>
       </Form.Group>
 
