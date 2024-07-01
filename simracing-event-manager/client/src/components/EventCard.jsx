@@ -3,7 +3,7 @@ import { Badge, Button, Card, Col, ListGroup } from 'react-bootstrap';
 export default function EventCard({title}) {
     return (
         <Col md={3} className="my-3">
-        <Card className="bg-" style={{ width: '20rem' }}>
+        <Card style={{ width: '20rem', marginLeft: 'auto', marginRight: 'auto' }}>
       <Card.Img variant="top" src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSo-zgQ0O12LZbC42tBJLT4v7RMRYh9TxxDDw&s" />
       <Card.Body>
         <Card.Title>{title}</Card.Title>

@@ -17,7 +17,7 @@ export default function Events() {
                     </InputGroup>
                 </Form>
             </div>
-            <Row className="mx-0">
+            <Row className="mx-4">
                 <EventCard />
                 <EventCard />
                 <EventCard />
