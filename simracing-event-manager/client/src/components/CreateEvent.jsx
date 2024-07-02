@@ -1,7 +1,10 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
 import { create } from '../services/eventService';
+import { useNavigate } from 'react-router-dom';
 
 export default function CreateEvent() {
+
+  const navigate = useNavigate();
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -10,10 +13,10 @@ export default function CreateEvent() {
         const eventCategories = formData.getAll("category");
         eventData.category = eventCategories;
 
-        console.log(eventData);
         const result = await create(eventData);
         console.log(result);
-        // we need to pass eventData to the function that will create the event in the backend
+        
+        navigate('/events');
     }
     return (
         <>
@@ -64,7 +67,7 @@ export default function CreateEvent() {
                 label="GT2"
                 inline
                 name="category"
-                value="gt2"
+                value="GT2"
             />
             <Form.Check // prettier-ignore
                 type="switch"
@@ -72,14 +75,14 @@ export default function CreateEvent() {
                 label="GT3"
                 inline
                 name="category"
-                value="gt3"
+                value="GT3"
             />
             <Form.Check // prettier-ignore
                 type="switch"
                 id="gt4"
                 label="GT4"
                 inline
-                value="gt4"
+                value="GT4"
                 name="category"
             />
             <Form.Check // prettier-ignore
@@ -87,7 +90,7 @@ export default function CreateEvent() {
                 id="gtc"
                 label="GTC"
                 inline
-                value="gtc"
+                value="GTC"
                 name="category"
             />
             <Form.Check // prettier-ignore
@@ -95,7 +98,7 @@ export default function CreateEvent() {
                 id="tcx"
                 label="TCX"
                 inline
-                value="tcx"
+                value="TCX"
                 name="category"
             />
         </Col>
@@ -112,7 +115,7 @@ export default function CreateEvent() {
             name="type"
             label="Solo"
             type="radio"
-            value="solo"
+            value="Solo"
             id={`reverse-radio-1`}
             inline
           />
@@ -121,7 +124,7 @@ export default function CreateEvent() {
             name="type"
             label="Team"
             type="radio"
-            value="team"
+            value="Team"
             id={`reverse-radio-2`}
             inline
           />
@@ -130,7 +133,7 @@ export default function CreateEvent() {
             name="type"
             label="Both"
             type="radio"
-            value="both"
+            value="Both"
             id={`reverse-radio-3`}
             inline
           />

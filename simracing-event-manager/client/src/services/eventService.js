@@ -2,10 +2,15 @@ import { del, get, post, put } from "../utils/request";
 
 
 const endpoints = {
-    events: 'http://localhost:3030/data/events/',
+    events: 'http://localhost:3030/data/events',
 }
 
 // TODO --> change user object
+export async function getRecent() {
+    const query = '?sortBy=_createdOn%20desc&offset=0&pageSize=4';
+    const result = await get(endpoints.events + query);
+    return result;
+}
 
 export async function getAll(){
     const result = await get(endpoints.events);
@@ -14,7 +19,7 @@ export async function getAll(){
 }
 
 export async function getById(id) {
-    const result = await get(endpoints.events + id);
+    const result = await get(endpoints.events + '/' + id);
     return result;
 }
 
@@ -24,11 +29,11 @@ export async function create(data) {
 }
 
 export async function update(id, data) {
-    const result = await put(endpoints.events + id, data);
+    const result = await put(endpoints.events + '/' + id, data);
     return result;
 }
 
 export async function deleteById(id) {
-    const result = await del(endpoints.events + id);
+    const result = await del(endpoints.events + '/' + id);
     return result;
 }

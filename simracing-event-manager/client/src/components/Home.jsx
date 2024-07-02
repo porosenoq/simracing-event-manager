@@ -1,8 +1,22 @@
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import EventCard from './EventCard';
+import { getRecent } from '../services/eventService';
+import { useEffect, useState } from 'react';
 
 export default function Home() {
+
+    const [events, setEvents] = useState();
+
+    useEffect(() => {
+        async function fetchData() {
+          const recentEvents = await getRecent();
+          const eventsList = recentEvents.map(event => <EventCard key={event._id} event={event}/>);
+          setEvents(eventsList);
+        }
+        fetchData();
+      }, []); 
+      
     return(
         <>
         <Row className="text-light mx-0">
@@ -28,10 +42,7 @@ export default function Home() {
 
         {/* must display recent 4 */}
 
-            <EventCard title={'24h of Imola GT3'}/>
-            <EventCard title={'3h of Spa Francorchamp'}/>
-            <EventCard title={'Nurburging Endurance race 6h'}/>
-            <EventCard title={'Brands Hatch Sprint Race'}/>
+            {events}
          </Row>
          <Row className="mx-0">
             <div className='container my-3'>
