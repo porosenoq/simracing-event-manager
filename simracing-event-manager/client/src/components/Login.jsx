@@ -21,7 +21,6 @@ export default function Login() {
         <Form.Label>Email address</Form.Label>
         <Form.Control type="email" name="email" placeholder="Enter email" />
         <Form.Text className="text-muted">
-          Show errors here
           {/*{errors ? errors : null}*/}
         </Form.Text>
       </Form.Group>
@@ -31,7 +30,7 @@ export default function Login() {
         <Form.Control type="password" name="password" placeholder="Password" />
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check type="checkbox" inline label="Remember me?" />
       </Form.Group>
       <Button variant="warning" type="submit">
         Login

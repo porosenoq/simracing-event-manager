@@ -16,7 +16,7 @@ export default function Register() {
           <Form.Label>Email address</Form.Label>
           <Form.Control type="email" name="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
-            some text
+            {/* errors */}
           </Form.Text>
         </Form.Group>
   
@@ -24,16 +24,10 @@ export default function Register() {
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" name="password" placeholder="Password" />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="check1">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
-
+  
         <Form.Group className="mb-3" controlId="repass">
           <Form.Label>Repeat password</Form.Label>
           <Form.Control type="password" name="repass" placeholder="Repeat password" />
-        </Form.Group>
-        <Form.Group className="mb-3" controlId="check2">
-          <Form.Check type="checkbox" label="Check me out" />
         </Form.Group>
 
         <Button variant="warning" type="submit">

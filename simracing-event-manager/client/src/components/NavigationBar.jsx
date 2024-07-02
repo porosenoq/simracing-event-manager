@@ -46,7 +46,8 @@ export default function NavigationBar() {
                   <NavDropdown.Item className="navbar-link" as={Link} to="/teams">Browse Teams</NavDropdown.Item>
                 </NavDropdown>
               </> 
-              : <><Nav.Link className="navbar-link" as={Link} to="/events">Events</Nav.Link><Nav.Link as={Link} to="/teams">Teams</Nav.Link></>
+              : <><Nav.Link className="navbar-link" as={Link} to="/events">Events</Nav.Link>
+              <Nav.Link className="navbar-link" as={Link} to="/teams">Teams</Nav.Link></>
             
             }
             {!auth.email ? 
@@ -55,24 +56,6 @@ export default function NavigationBar() {
             <Nav.Link as={Link} className="navbar-link" to="/register">Register</Nav.Link>
             </>
             : null}
-
-            <NavDropdown
-            className="navbar-link"
-              id="nav-dropdown-dark-menu"
-              title="Menu"
-              menuVariant="dark"
-            >
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
-              </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
-              </NavDropdown.Item>
-            </NavDropdown>
-
 
         <Row className="navbarRight">
           <Col className="text-light d-flex align-items-center">
