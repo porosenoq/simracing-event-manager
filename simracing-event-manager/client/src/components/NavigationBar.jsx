@@ -18,44 +18,47 @@ export default function NavigationBar() {
             Simracing Event Manager
             </Navbar.Brand>
           <Nav className="me-auto">
-            <Nav.Link as={Link} to="/">Home</Nav.Link>
+            <Nav.Link as={Link} className="navbar-link" to="/">Home</Nav.Link>
             {auth.email ? 
               <>
                 <NavDropdown
-                  id="nav-dropdown-dark-example"
+                className="navbar-link"
+                  id="nav-dropdown-dark-events"
                   title="Events"
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item as={Link} to="/events/me">My events</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/events/create">
+                  <NavDropdown.Item className="navbar-link sub" as={Link} to="/events/me">My events</NavDropdown.Item>
+                  <NavDropdown.Item className="navbar-link sub" as={Link} to="/events/create">
                     Create event
                   </NavDropdown.Item>                  
-                  <NavDropdown.Item as={Link} to="/events">Show all events</NavDropdown.Item>
+                  <NavDropdown.Item className="navbar-link sub" as={Link} to="/events">Show all events</NavDropdown.Item>
                 </NavDropdown>
                 <NavDropdown
-                  id="nav-dropdown-dark-example"
+                className="navbar-link"
+                  id="nav-dropdown-dark-teams"
                   title="Teams"
                   menuVariant="dark"
                 >
-                  <NavDropdown.Item as={Link} to="/teams/me">My teams</NavDropdown.Item>
-                  <NavDropdown.Item as={Link} to="/teams/create">
+                  <NavDropdown.Item className="navbar-link" as={Link} to="/teams/me">My teams</NavDropdown.Item>
+                  <NavDropdown.Item className="navbar-link" as={Link} to="/teams/create">
                     Create team
                   </NavDropdown.Item>                  
-                  <NavDropdown.Item as={Link} to="/teams">Browse Teams</NavDropdown.Item>
+                  <NavDropdown.Item className="navbar-link" as={Link} to="/teams">Browse Teams</NavDropdown.Item>
                 </NavDropdown>
               </> 
-              : <><Nav.Link as={Link} to="/events">Events</Nav.Link><Nav.Link as={Link} to="/teams">Teams</Nav.Link></>
+              : <><Nav.Link className="navbar-link" as={Link} to="/events">Events</Nav.Link><Nav.Link as={Link} to="/teams">Teams</Nav.Link></>
             
             }
             {!auth.email ? 
             <>
-            <Nav.Link as={Link} to="/login">Login</Nav.Link>
-            <Nav.Link as={Link} to="/register">Register</Nav.Link>
+            <Nav.Link as={Link} className="navbar-link" to="/login">Login</Nav.Link>
+            <Nav.Link as={Link} className="navbar-link" to="/register">Register</Nav.Link>
             </>
             : null}
 
             <NavDropdown
-              id="nav-dropdown-dark-example"
+            className="navbar-link"
+              id="nav-dropdown-dark-menu"
               title="Menu"
               menuVariant="dark"
             >
@@ -74,7 +77,7 @@ export default function NavigationBar() {
         <Row className="navbarRight">
           <Col className="text-light d-flex align-items-center">
           <NavDropdown
-              id="nav-dropdown-dark-example"
+              id="nav-dropdown-dark-user"
               title={auth.email ? auth.email : 'Welcome, guest'}
               menuVariant="dark"
             >

@@ -30,3 +30,57 @@ body {
   height: 150px;
 }
 
+.event-title {
+  color: #ffc107;
+  text-decoration: none;
+}
+
+.event-title:hover {
+  color: #198754;
+}
+
+.event-list-items {
+  border-color: #ffc107;
+}
+
+.event-list-buttons-container {
+  border-top: 1px solid #ffc107;
+}
+
+.first-item {
+  border-top: 1px solid #ffc107 !important;
+}
+
+#nav-dropdown-dark-user {
+  color: #ffc107;
+}
+
+.navbar-link {
+  color:  #ffc107;
+}
+
+.navbar-link a {
+  color: #ffc107;
+}
+
+.sub:hover {
+  color: white !important;
+}
+
+a:hover {
+  color: #198754 !important;
+}
+
+.dropdown-item:hover {
+  color: white !important;
+}
+
+.navbar-link .show {
+  color: #198754;
+}
+
+.event-description {
+  height: 40px;
+}
+
+
