@@ -1340,16 +1340,49 @@
     };
     var seedData = {
 		events: {
-    		"07f260f4-466c-4607-9a33-f7273b24f1b4": {
+    		"07f260f4-466c-4607-9a33-f7273b24f1b1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Event name",
+    			name: "Event 1",
+    			description: "event descr",
+    			image: "https://wss-turbo.b-cdn.net/event_images/20211109223958618af8bed523a.jpeg",
+    			type: "Solo",
+				track: "Imola",
+    			category: ["GT3"],
+    			_createdOn: 1614760714812,
+    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b1"
+    		},
+			"07f260f4-466c-4607-9a33-f7273b24f1b2": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Event 2",
     			description: "event descr",
     			image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN04EuS1V527ffklNypC_uAeDMXMabGW90tw&s",
     			type: "Solo",
 				track: "Imola",
     			category: ["GT3"],
     			_createdOn: 1614760714812,
-    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b9"
+    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b2"
+    		},
+			"07f260f4-466c-4607-9a33-f7273b24f1b3": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Event 3",
+    			description: "event descr",
+    			image: "https://wss-turbo.b-cdn.net/event_images/202209131801226320c57226561.jpeg",
+    			type: "Solo",
+				track: "Imola",
+    			category: ["GT3"],
+    			_createdOn: 1614760714812,
+    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b3"
+    		},
+			"07f260f4-466c-4607-9a33-f7273b24f1b4": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Event 4",
+    			description: "event descr",
+    			image: "https://www.fia.com/sites/default/files/news/main_image/esports_release_image.jpeg",
+    			type: "Solo",
+				track: "Imola",
+    			category: ["GT3"],
+    			_createdOn: 1614760714812,
+    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
     		}
     	},
     	teams: {

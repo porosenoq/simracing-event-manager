@@ -12,10 +12,15 @@ export default function Events() {
 
     useEffect(() => {
         async function fetchData() {
-          const allEvents = await getAll();
-          const eventsList = allEvents.map(event => <EventCard key={event._id} event={event}/>);
-          setEvents(eventsList);
-          setEventsArr(allEvents);
+            try {
+                const allEvents = await getAll();
+                const eventsList = allEvents.map(event => <EventCard key={event._id} event={event}/>);
+                setEvents(eventsList);
+                setEventsArr(allEvents);
+            } catch(err) {
+                console.log('Handle this error', err);
+            }
+          
         }
         fetchData();
       }, []);
@@ -46,6 +51,7 @@ export default function Events() {
                             aria-label="Search events..."
                             aria-describedby="basic-addon2"
                             value={searchTerm}
+                            id="searchField"
                         />
                     <Button variant="warning" id="button-addon2">Search</Button>
                     </InputGroup>

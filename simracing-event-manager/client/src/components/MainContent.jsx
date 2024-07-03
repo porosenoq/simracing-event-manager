@@ -11,6 +11,7 @@ import CreateTeam from './CreateTeam';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
 import Logout from './Logout';
+import MyEvents from './MyEvents';
 
 export default function MainContent() {
     return (
@@ -27,6 +28,7 @@ export default function MainContent() {
               <Route path="/register" element={<Register />}/>
               <Route path="/teams/create" element={<CreateTeam />} />
               <Route path="/events/create" element={<CreateEvent />} />
+              <Route path="/events/me" element={<MyEvents />} />
             </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
