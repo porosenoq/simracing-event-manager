@@ -18,7 +18,7 @@ function App() {
     if(!auth.email) {
       localStorage.removeItem('user');
     }
-  })
+  }, [])
 
   function logoutHandler() {
     localStorage.removeItem('user');

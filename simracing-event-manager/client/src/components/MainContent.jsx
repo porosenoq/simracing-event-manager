@@ -6,12 +6,13 @@ import Drivers from './Drivers';
 import Login from './Login';
 import NotFound from './NotFound';
 import Register from './Register';
-import { ProtectedRoute } from './ProtectedRoute';
+import { GuestProtectedRoutes } from './GuestProtectedRoutes';
 import CreateTeam from './CreateTeam';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
 import Logout from './Logout';
 import MyEvents from './MyEvents';
+import { UserProtectedRoutes } from './UserProtectedRoutes';
 
 export default function MainContent() {
     return (
@@ -22,13 +23,15 @@ export default function MainContent() {
           <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
           <Route path="/drivers" element={<Drivers />}/>
-            <Route element={<ProtectedRoute />}>
-              <Route path="/login" element={<Login />}/>
-              <Route path="/logout" element={<Logout />}/>
-              <Route path="/register" element={<Register />}/>
+            <Route element={<GuestProtectedRoutes />}>
               <Route path="/teams/create" element={<CreateTeam />} />
               <Route path="/events/create" element={<CreateEvent />} />
               <Route path="/events/me" element={<MyEvents />} />
+              <Route path="/logout" element={<Logout />}/>
+            </Route>
+            <Route element={<UserProtectedRoutes />}>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/register" element={<Register />}/>
             </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>
