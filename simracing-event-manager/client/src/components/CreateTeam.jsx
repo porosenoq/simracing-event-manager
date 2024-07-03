@@ -11,7 +11,6 @@ export default function CreateTeam() {
         <Form.Label>Team name</Form.Label>
         <Form.Control type="email" name="email" placeholder="Enter team name" />
         <Form.Text className="text-muted">
-          Show errors here
           {/*{errors ? errors : null}*/}
         </Form.Text>
       </Form.Group>
