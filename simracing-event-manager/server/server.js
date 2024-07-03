@@ -1477,6 +1477,19 @@
     			_id: "bdabf5e9-23be-40a1-9f14-9117b6702a9d"
     		}
     	},
+		events: {
+    		"07f260f4-466c-4607-9a33-f7273b24f1b4": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "Event name",
+    			description: "event descr",
+    			image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSN04EuS1V527ffklNypC_uAeDMXMabGW90tw&s",
+    			type: "Solo",
+				track: "Imola",
+    			category: ["GT3"],
+    			_createdOn: 1614760714812,
+    			_id: "07f260f4-466c-4607-9a33-f7273b24f1b9"
+    		}
+    	},
     	furniture: {
     	},
     	orders: {

@@ -59,21 +59,27 @@ export default function NavigationBar() {
 
         <Row className="navbarRight">
           <Col className="text-light d-flex align-items-center">
+          {auth.email ? 
+          <>
           <NavDropdown
               id="nav-dropdown-dark-user"
               title={auth.email ? auth.email : 'Welcome, guest'}
               menuVariant="dark"
             >
-              <NavDropdown.Item href="#action/3.1">Edit</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">Settings</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">Sign out</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/profile/me'}>Profile</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to={'/logout'}>Sign out</NavDropdown.Item>
             </NavDropdown>
+          </> : <>{'Welcome, guest!'}<Link to={'/login'}className='navbar-link nav-link'>please login</Link></>}
+          
           </Col>
          
+         {auth.email ? 
+         <>
           <Col>
-        <Image className="profilePic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" roundedCircle />
+            <Image className="profilePic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" roundedCircle />
           </Col>
+         </> : null}
+         
         </Row>
             
           </Nav>

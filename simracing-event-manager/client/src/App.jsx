@@ -8,11 +8,23 @@ import MainContent from './components/MainContent';
 import NavigationBar from './components/NavigationBar';
 import AuthContext from './contexts/authContext';
 import usePersistedState from './hooks/usePersistedState';
+import { useEffect } from 'react';
 
 function App() {
-  const navigate = useNavigate();
-  
   const [auth, setAuth] = usePersistedState('user', {});
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if(!auth.email) {
+      localStorage.removeItem('user');
+    }
+  })
+
+  function logoutHandler() {
+    localStorage.removeItem('user');
+    setAuth({});
+  }
+  
   
   async function loginSubmitHandler(e) {
     e.preventDefault();
@@ -51,7 +63,7 @@ function App() {
 
   return (
     <>
-    <AuthContext.Provider value={{loginSubmitHandler, registerSubmitHandler, auth}}>
+    <AuthContext.Provider value={{loginSubmitHandler, registerSubmitHandler, logoutHandler, auth}}>
       <NavigationBar user={auth}/>
 
       <MainContent />

@@ -10,6 +10,7 @@ import { ProtectedRoute } from './ProtectedRoute';
 import CreateTeam from './CreateTeam';
 import CreateEvent from './CreateEvent';
 import EventDetails from './EventDetails';
+import Logout from './Logout';
 
 export default function MainContent() {
     return (
@@ -20,9 +21,10 @@ export default function MainContent() {
           <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
           <Route path="/drivers" element={<Drivers />}/>
-          <Route path="/login" element={<Login />}/>
-          <Route path="/register" element={<Register />}/>
             <Route element={<ProtectedRoute />}>
+              <Route path="/login" element={<Login />}/>
+              <Route path="/logout" element={<Logout />}/>
+              <Route path="/register" element={<Register />}/>
               <Route path="/teams/create" element={<CreateTeam />} />
               <Route path="/events/create" element={<CreateEvent />} />
             </Route>

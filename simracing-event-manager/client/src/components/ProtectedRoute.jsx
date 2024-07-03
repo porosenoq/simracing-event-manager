@@ -9,7 +9,7 @@ export const ProtectedRoute = () => {
     useEffect(() => {
         if (!auth.email) {
             navigate("/login");
-          }    
+          }
       }, [auth.email, navigate]);
     
     return (
