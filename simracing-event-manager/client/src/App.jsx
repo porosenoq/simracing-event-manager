@@ -20,9 +20,9 @@ function App() {
     }
   }, [])
 
-  function logoutHandler() {
-    localStorage.removeItem('user');
+  async function logoutHandler() {
     setAuth({});
+    localStorage.removeItem('user');
   }
   
   
