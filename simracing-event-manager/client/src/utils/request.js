@@ -28,7 +28,16 @@ export async function request(method, url, data) {
                 //access token has expired
                 clearUserData();
             }
+
+            if(userData && err.code == 401) {
+                throw new Error(err.message);
+            }
+            
             throw new Error(err.message);
+        }
+
+        if(res.status == 204) {
+            return {};
         }
 
         return res.json();
