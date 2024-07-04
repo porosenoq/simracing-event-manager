@@ -34,7 +34,7 @@ export default function EventCard({event}) {
         <Card className="bg-dark text-white event-card" style={{ width: '20rem', marginLeft: 'auto', marginRight: 'auto' }}>
       <Card.Img variant="top" className="card-image-h" src={event.image} />
       <Card.Body>
-        <Card.Title><Link className='event-title'>{event.name}</Link></Card.Title>
+        <Card.Title><Link to={`/events/details/${event._id}`} className='event-title'>{event.name}</Link></Card.Title>
         <Card.Text className="event-description">
           {event.description.length > 50 ? event.description.substring(0, 50) + '...' : event.description}
         </Card.Text>
