@@ -47,6 +47,7 @@ export default function EventCard({event}) {
         <ListGroup.Item className="bg-dark text-white event-list-items">Event date: 05/07/2024 18:00UTC</ListGroup.Item>
       </ListGroup>
       <Card.Body className="event-list-buttons-container">
+        {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
         {auth.email && !isSignedUp && !gridFull ? <Button onClick={() => signUphandler(event._id)} className="mx-2" variant="success">Sign up</Button> : null}
         {gridFull ? <Button variant="warning mx-2">Grid is currently full</Button> : null}
         {auth.email && isSignedUp ? <Button className="mx-2" variant="danger">Sign out</Button> : null}
