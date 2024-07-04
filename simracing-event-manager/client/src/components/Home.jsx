@@ -1,18 +1,29 @@
 import { Button, Col, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import EventCard from './EventCard';
 import { getRecent } from '../services/eventService';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AuthContext from '../contexts/authContext';
 
 export default function Home() {
 
     const [events, setEvents] = useState();
+    const {logoutHandler} = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
-          const recentEvents = await getRecent();
-          const eventsList = recentEvents.map(event => <EventCard key={event._id} event={event}/>);
-          setEvents(eventsList);
+            try{
+                const recentEvents = await getRecent();
+                const eventsList = recentEvents.map(event => <EventCard key={event._id} event={event}/>);
+                setEvents(eventsList);
+            } catch(err) {
+                if(err.message == "Invalid access token") {
+                    logoutHandler();
+                    navigate('/login');
+                }
+            }
         }
         fetchData();
       }, []); 
