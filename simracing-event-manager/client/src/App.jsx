@@ -54,7 +54,6 @@ function App() {
     try {
       const user = await register(email, password);
       setAuth(user);
-      localStorage.setItem('user', user);
       navigate('/');
     } catch(err) {
       alert(err.message);
