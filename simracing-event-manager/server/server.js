@@ -1348,6 +1348,8 @@
     			type: "Solo",
 				track: "Imola",
     			category: ["GT3"],
+                gridSize: 24,
+                subscribers: [],
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b1"
     		},
@@ -1359,6 +1361,8 @@
     			type: "Solo",
 				track: "Imola",
     			category: ["GT3"],
+                gridSize: 24,
+                subscribers: [],
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b2"
     		},
@@ -1370,6 +1374,8 @@
     			type: "Solo",
 				track: "Imola",
     			category: ["GT3"],
+                gridSize: 24,
+                subscribers: [],
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b3"
     		},
@@ -1381,6 +1387,8 @@
     			type: "Solo",
 				track: "Imola",
     			category: ["GT3"],
+                gridSize: 24,
+                subscribers: [],
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
     		}
@@ -1388,28 +1396,11 @@
     	teams: {
     		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Storm Troopers",
-    			logoUrl: "/assets/atat.png",
-    			description: "These ARE the droids we're looking for",
-    			_createdOn: 1615737591748,
+    			name: "Team 1",
+    			image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1J25N9YJjNxkghAQZUbXYJDIbz73zn91B3A&s",
+                _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
     		},
-    		"dc888b1a-400f-47f3-9619-07607966feb8": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Team Rocket",
-    			logoUrl: "/assets/rocket.png",
-    			description: "Gotta catch 'em all!",
-    			_createdOn: 1615737655083,
-    			_id: "dc888b1a-400f-47f3-9619-07607966feb8"
-    		},
-    		"733fa9a1-26b6-490d-b299-21f120b2f53a": {
-    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
-    			name: "Minions",
-    			logoUrl: "/assets/hydrant.png",
-    			description: "Friendly neighbourhood jelly beans, helping evil-doers succeed.",
-    			_createdOn: 1615737688036,
-    			_id: "733fa9a1-26b6-490d-b299-21f120b2f53a"
-    		}
     	},
     };
     var rules$1 = {

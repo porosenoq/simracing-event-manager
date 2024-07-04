@@ -12,9 +12,14 @@ export default function CreateEvent() {
         const eventData = Object.fromEntries(formData);
         const eventCategories = formData.getAll("category");
         eventData.category = eventCategories;
+        eventData.subscribers = [];
 
-        const result = await create(eventData);
-        console.log(result);
+        try {
+          const result = await create(eventData);
+          console.log(result);
+        } catch(err) {
+          throw new Error('Access token has expired!')
+        }
         
         navigate('/events');
     }
@@ -103,6 +108,11 @@ export default function CreateEvent() {
             />
         </Col>
         </Row>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="eventImage">
+        <Form.Label>Grid size:</Form.Label>
+        <Form.Control type="number" name="gridSize" placeholder="grid size" />
       </Form.Group>
 
       <Form.Group>

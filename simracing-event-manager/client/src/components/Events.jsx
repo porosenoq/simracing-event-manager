@@ -1,7 +1,9 @@
 import { Form, Button, Row, InputGroup } from 'react-bootstrap';
 import EventCard from './EventCard';
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { getAll } from '../services/eventService';
+import { useNavigate } from 'react-router-dom';
+import AuthContext from '../contexts/authContext';
 
 export default function Events() {
 
@@ -9,6 +11,9 @@ export default function Events() {
     const [eventsArr, setEventsArr] = useState();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchCriteria, setSearchCriteria] = useState('');
+
+    const navigate = useNavigate();
+    const {logoutHandler} = useContext(AuthContext);
 
     useEffect(() => {
         async function fetchData() {
@@ -18,7 +23,10 @@ export default function Events() {
                 setEvents(eventsList);
                 setEventsArr(allEvents);
             } catch(err) {
-                console.log('Handle this error', err);
+                if(err.message == "Invalid access token") {
+                    logoutHandler();
+                    navigate('/login')
+                }
             }
           
         }
