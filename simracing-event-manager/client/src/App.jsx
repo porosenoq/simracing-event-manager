@@ -14,7 +14,7 @@ function App() {
   const [auth, setAuth] = usePersistedState('user', {});
   const navigate = useNavigate();
 
-  useEffect(() => {
+  useEffect(() => {    
     if(!auth.email) {
       localStorage.removeItem('user');
     }

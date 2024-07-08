@@ -23,7 +23,7 @@ export default function EventCard({event}) {
 
   async function signUphandler() {
     const eventSubscribers = event.subscribers;
-    eventSubscribers.push(auth._id);
+    eventSubscribers.push({ _id: auth._id, username: auth.username });
     const response = await update(event._id, {...event, subscribers: eventSubscribers});
     console.log(response);
     setIsSignedUp(true);
@@ -36,7 +36,7 @@ export default function EventCard({event}) {
       <Card.Body>
         <Card.Title><Link to={`/events/details/${event._id}`} className='event-title'>{event.name}</Link></Card.Title>
         <Card.Text className="event-description">
-          {event.description.length > 50 ? event.description.substring(0, 50) + '...' : event.description}
+          {event.description.length > 50 ? <>{event.description.substring(0, 50)} <Link className='navbar-link'>...read more</Link></> : event.description}
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush event-list-items">

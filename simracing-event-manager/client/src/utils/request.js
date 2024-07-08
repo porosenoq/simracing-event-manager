@@ -1,6 +1,6 @@
 import { clearUserData, getUserData } from "./util.js";
 
-export async function request(method, url, data) {
+export async function request(method, url, data, isAdmin = false) {
     const options = {
         method,
         headers: {},
@@ -8,6 +8,10 @@ export async function request(method, url, data) {
     };
 
     const userData = getUserData();
+
+    if(isAdmin) {
+        options.headers["X-Admin"] = true;
+    }
 
     if(userData) {
         options.headers["X-Authorization"] = userData.accessToken;
@@ -50,5 +54,6 @@ export async function request(method, url, data) {
 export const get = (url) => request('get', url);
 export const post = (url, data) => request('post', url, data);
 export const put = (url, data) => request('put', url, data);
+export const putAdmin = (url, data) => request('put', url, data, true);
 export const patch = (url, data) => request('patch', url, data);
 export const del = (url) => request('delete', url);

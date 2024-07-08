@@ -1,4 +1,4 @@
-import { del, get, patch, post, put } from "../utils/request";
+import { del, get, patch, post, putAdmin } from "../utils/request";
 
 
 const endpoints = {
@@ -29,7 +29,7 @@ export async function create(data) {
 }
 
 export async function update(id, data) {
-    const result = await put(endpoints.events + '/' + id, data);
+    const result = await putAdmin(endpoints.events + '/' + id, data);
     return result;
 }
 
