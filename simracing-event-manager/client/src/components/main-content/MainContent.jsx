@@ -1,19 +1,19 @@
 import { Route, Routes } from 'react-router-dom';
-import Home from './Home';
-import Events from './Events';
-import Teams from './Teams';
-import Drivers from './Drivers';
-import Login from './Login';
-import NotFound from './NotFound';
-import Register from './Register';
-import { GuestProtectedRoutes } from './GuestProtectedRoutes';
-import CreateTeam from './CreateTeam';
-import CreateEvent from './CreateEvent';
-import EventDetails from './EventDetails';
-import Logout from './Logout';
-import MyEvents from './MyEvents';
-import { UserProtectedRoutes } from './UserProtectedRoutes';
-import Profile from './Profile';
+import Home from '../home/Home';
+import Events from '../events/Events';
+import Teams from '../teams/Teams';
+import Drivers from '../drivers/Drivers';
+import Login from '../login/Login';
+import NotFound from '../not-found/NotFound';
+import Register from '../register/Register';
+import { GuestProtectedRoutes } from '../protected-routes/GuestProtectedRoutes';
+import CreateTeam from '../teams/CreateTeam';
+import CreateEvent from '../events/CreateEvent';
+import EventDetails from '../events/EventDetails';
+import Logout from '../logout/Logout';
+import MyEvents from '../events/MyEvents';
+import { UserProtectedRoutes } from '../protected-routes/UserProtectedRoutes';
+import Profile from '../profile/Profile';
 
 export default function MainContent() {
     return (

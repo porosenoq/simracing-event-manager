@@ -3,9 +3,9 @@ import './App.css';
 import { login, register } from './services/authService';
 import { useNavigate } from 'react-router-dom';
 
-import Footer from './components/Footer';
-import MainContent from './components/MainContent';
-import NavigationBar from './components/NavigationBar';
+import Footer from './components/footer/Footer';
+import MainContent from './components/main-content/MainContent';
+import Header from './components/header/Header';
 import AuthContext from './contexts/authContext';
 import usePersistedState from './hooks/usePersistedState';
 import { useEffect } from 'react';
@@ -63,7 +63,7 @@ function App() {
   return (
     <>
     <AuthContext.Provider value={{loginSubmitHandler, registerSubmitHandler, logoutHandler, auth}}>
-      <NavigationBar user={auth}/>
+      <Header user={auth}/>
 
       <MainContent />
 

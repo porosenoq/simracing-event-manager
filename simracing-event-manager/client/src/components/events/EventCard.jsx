@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, ListGroup } from 'react-bootstrap';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 import { Link } from 'react-router-dom';
-import { getById, update } from '../services/eventService';
+import { getById, update } from '../../services/eventService';
 
 export default function EventCard({event}) {
 
@@ -36,7 +36,7 @@ export default function EventCard({event}) {
       <Card.Body>
         <Card.Title><Link to={`/events/details/${event._id}`} className='event-title'>{event.name}</Link></Card.Title>
         <Card.Text className="event-description">
-          {event.description.length > 50 ? <>{event.description.substring(0, 50)} <Link className='navbar-link'>...read more</Link></> : event.description}
+          {event.description.length > 50 ? <>{event.description.substring(0, 50)}... <Link to={'/events/details/' + event._id} className='navbar-link'>read more</Link></> : event.description}
         </Card.Text>
       </Card.Body>
       <ListGroup className="list-group-flush event-list-items">

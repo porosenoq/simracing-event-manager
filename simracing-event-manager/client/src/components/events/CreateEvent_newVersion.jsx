@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
 import { create } from '../services/eventService';
 import { useNavigate } from 'react-router-dom';
 
@@ -25,10 +25,14 @@ export default function CreateEvent() {
     }
     return (
         <>
+        <Container className="my-3">
+        <Card className="text-white bg-dark">
+
     <h2>Create new event:</h2>
-    <Row className="mx-0">
-      <Col md={4} className='container py-5'>
+    
     <Form onSubmit={submitHandler}>
+    <Row className="mx-0">
+      <Col md={5} className='container py-5'>
       <Form.Group className="mb-3" controlId="eventName">
         <Form.Label>Event name</Form.Label>
         <Form.Control type="text" name="name" placeholder="Enter event name" />
@@ -73,7 +77,7 @@ export default function CreateEvent() {
                 inline
                 name="category"
                 value="GT2"
-            />
+                />
             <Form.Check // prettier-ignore
                 type="switch"
                 id="gt3"
@@ -151,12 +155,45 @@ export default function CreateEvent() {
         </Row>
       </Form.Group>
 
+      </Col>
+      <Col md={5} className="container py-5">
+      <Form.Group className="mb-3" controlId="eventName">
+        <Form.Label>Ingame times</Form.Label>
+        <Form.Control className="create-event-input" type="text" name="practice" placeholder="Practice" />
+        <Form.Control className="create-event-input" type="text" name="quali" placeholder="Quali" />
+        <Form.Control className="create-event-input" type="text" name="race" placeholder="Race" />
+        <Form.Text className="text-muted">
+          {/*{errors ? errors : null}*/}
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="eventName">
+        <Form.Label>Pitstop</Form.Label>
+        <Form.Control type="text" name="pitstop" placeholder="Pitstop" />
+        <Form.Text className="text-muted">
+          {/*{errors ? errors : null}*/}
+        </Form.Text>
+      </Form.Group>
+
+      <Form.Group className="mb-3" controlId="eventName">
+        <Form.Label>Sessions</Form.Label>
+        <Form.Control className="create-event-input" type="text" name="practice" placeholder="Practice" />
+        <Form.Control className="create-event-input" type="text" name="quali" placeholder="quali" />
+        <Form.Control className="create-event-input" type="text" name="race" placeholder="race" />
+        <Form.Text className="text-muted">
+          {/*{errors ? errors : null}*/}
+        </Form.Text>
+      </Form.Group>
+      </Col>
+    </Row>
+    <Row>
       <Button variant="warning" type="submit">
         Create event
       </Button>
-    </Form>
-      </Col>
     </Row>
+    </Form>
+                </Card>
+                </Container>
     </>
     );
 }

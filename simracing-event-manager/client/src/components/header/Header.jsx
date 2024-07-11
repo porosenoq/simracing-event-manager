@@ -1,17 +1,37 @@
-import { useContext } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { Col, Container, Image, Nav, NavDropdown, Row} from 'react-bootstrap';
 import Navbar from 'react-bootstrap/Navbar';
 import { Link } from 'react-router-dom';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
+import { get } from '../../utils/request';
 
 
-export default function NavigationBar() {
-
+export default function Header() {
+  
   const {auth} = useContext(AuthContext);
+
+  const [userInfo, setUserInfo] = useState({});
+
+  useEffect(() => {
+    async function loadUserInfo() {
+      const currentUserInfo = await get(`http://localhost:3030/data/users_info?where=_ownerId%3D"${auth._id}"`);
+      if(currentUserInfo.length) {
+        setUserInfo(currentUserInfo[0]);
+      } else {
+        setUserInfo({avatar: "https://as1.ftcdn.net/v2/jpg/03/39/45/96/1000_F_339459697_XAFacNQmwnvJRqe1Fe9VOptPWMUxlZP8.jpg"});
+      }
+    }
+    if(auth._id) {
+      loadUserInfo();
+    } else {
+      setUserInfo({});
+    }
+  }, [auth._id]);
+
   
   return (
     <>
-      <Navbar bg="dark" data-bs-theme="dark">
+      <Navbar bg="dark" data-bs-theme="dark" className="py-0">
         <Container>
           <Navbar.Brand href="#home">
           <Image className="logoPic mx-3" src="/brt_logo.jpg" />
@@ -76,7 +96,7 @@ export default function NavigationBar() {
          {auth.email ? 
          <>
           <Col>
-            <Image className="profilePic" src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_960_720.png" roundedCircle />
+            <Image className="profilePic" src={userInfo?.avatar} roundedCircle />
           </Col>
          </> : null}
          

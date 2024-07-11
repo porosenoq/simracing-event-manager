@@ -1,6 +1,6 @@
 import { useContext, useEffect, useState } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 
 export default function Profile() {
     const [userId, setUserId] = useState('');
@@ -14,11 +14,12 @@ export default function Profile() {
         if(auth._id == id) {
             navigate('/profile/me');
         }
-
-
     }, []);
 
     return(
-        <h1>User profile page for {id}</h1>
+        <>
+        <h1>User profile page for {userId}</h1>
+        {/* TODO - implement user profile edit functionality */}
+        </>
     );
 }

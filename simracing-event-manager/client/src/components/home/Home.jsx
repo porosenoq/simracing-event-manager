@@ -1,9 +1,11 @@
 import { Button, Col, Row } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
-import EventCard from './EventCard';
-import { getRecent } from '../services/eventService';
 import { useContext, useEffect, useState } from 'react';
-import AuthContext from '../contexts/authContext';
+
+import { getRecent } from '../../services/eventService';
+import AuthContext from '../../contexts/authContext';
+
+import EventCard from '../events/EventCard';
 
 export default function Home() {
 

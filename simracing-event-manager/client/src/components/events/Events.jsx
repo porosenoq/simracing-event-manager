@@ -1,9 +1,9 @@
 import { Form, Button, Row, InputGroup } from 'react-bootstrap';
 import EventCard from './EventCard';
 import { useContext, useEffect, useState } from 'react';
-import { getAll } from '../services/eventService';
+import { getAll } from '../../services/eventService';
 import { useNavigate } from 'react-router-dom';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 
 export default function Events() {
 

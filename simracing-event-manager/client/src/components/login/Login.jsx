@@ -3,7 +3,7 @@ import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 
 export default function Login() {
   

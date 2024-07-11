@@ -1,8 +1,8 @@
 import { Button, Col, Form, Row } from 'react-bootstrap';
-import { create } from '../services/teamService';
+import { create } from '../../services/teamService';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
-import AuthContext from '../contexts/authContext';
+import AuthContext from '../../contexts/authContext';
 
 export default function CreateTeam() {
 

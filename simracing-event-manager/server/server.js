@@ -1339,6 +1339,14 @@
     	}
     };
     var seedData = {
+		users_info: {
+			"daf17a0e-2945-41b0-b47e-023a19ae22aa": {
+				"_ownerId": "35c62d76-8152-4626-8712-eeb96381bea8",
+				"avatar": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_IULLOXJT80cLu-eRqkRGrHY23yLEx4p0w&s",
+				"_createdOn": 1720706728780,
+				"_id": "daf17a0e-2945-41b0-b47e-023a19ae22aa"
+			}
+		},
 		events: {
     		"07f260f4-466c-4607-9a33-f7273b24f1b1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
@@ -1396,12 +1404,89 @@
     	teams: {
     		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Team 1",
-    			image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR1J25N9YJjNxkghAQZUbXYJDIbz73zn91B3A&s",
+    			name: "Bez Racing Team",
+    			image: "http://localhost:5173/brt_logo.jpg",
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
     		},
     	},
+		tracks: [
+			{
+				name: "Autodromo Internazionale Enzo e Dino Ferrari"
+			},
+			{
+				name: "Barcelona-Catalunya"
+			},
+			{
+				name: "Brands Hatch"
+			},
+			{
+				name: "Circuit of the Americas"
+			},
+			{
+				name: "Donington Park"
+			},
+			{
+				name: "Hungaroring"
+			},
+			{
+				name: "Indianapolis"
+			},
+			{
+				name: "Kyalami"
+			},
+			{
+				name: "Laguna Seca"
+			},
+			{
+				name: "Misano"
+			},
+			{
+				name: "Monza"
+			},
+			{
+				name: "Mount Panorama"
+			},
+			{
+				name: "Nurburgring"
+			},
+			{
+				name: "24h Nurburgring"
+			},
+			{
+				name: "Oulton Park"
+			},
+			{
+				name: "Paul Ricard"
+			},
+			{
+				name: "Red Bull Ring"
+			},
+			{
+				name: "Ricardo Tormo Circuit"
+			},
+			{
+				name: "Silverstone"
+			},
+			{
+				name: "Snetterton"
+			},
+			{
+				name: "Spa-Francorchamps"
+			},
+			{
+				name: "Suzuka"
+			},
+			{
+				name: "Watkins Glen"
+			},
+			{
+				name: "Zandvoort"
+			},
+			{
+				name: "Zolder"
+			},
+		],
     };
     var rules$1 = {
     	users: {
