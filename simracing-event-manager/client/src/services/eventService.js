@@ -23,6 +23,17 @@ export async function getById(id) {
     return result;
 }
 
+export async function getMyEvents(userId) {
+    const result = await get(endpoints.events + `?where=_ownerId%3D%22${userId}%22`);
+    return result;
+}
+
+export async function getMySignedUpEvents(userId) {
+    const allEvents = await getAll(endpoints.events);
+    const filteredEvents = allEvents.filter(e => e.subscribers.some(s => s._id == userId));
+    return filteredEvents;
+}
+
 export async function create(data) {
     const result = await post(endpoints.events, data);
     return result;
@@ -42,3 +53,4 @@ export async function deleteById(id) {
     const result = await del(endpoints.events + '/' + id);
     return result;
 }
+
