@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getById } from '../../services/eventService';
 import { Badge, Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap';
+import AuthContext from '../../contexts/authContext';
 
 export default function EventDetails() {
+
+    const { auth } = useContext(AuthContext);
     const {id} = useParams();
 
     const [event, setEvent] = useState({});
@@ -16,6 +19,8 @@ export default function EventDetails() {
         }
         loadEvent();
     }, []);
+
+    const isSignedUp = event.subscribers?.some(s => s._id == auth._id);
 
     return (
         <>    {/*     
@@ -120,7 +125,8 @@ export default function EventDetails() {
                   </tbody>
                 </Table>
               
-              <Button variant="success">Sign Up</Button>
+              {!isSignedUp ? <Button variant="success">Sign Up</Button> : <Button variant="danger">Sign Out</Button>}
+              
             </Card.Body>
           </Col>
         </Row>
