@@ -1370,9 +1370,22 @@
 				track: "Hungaroring",
     			category: ["GT3"],
                 gridSize: 24,
-                subscribers: [],
+                subscribers: [{_id: "847ec027-f659-4086-8032-5173e2f9c93a", username: "George"}],
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b2"
+    		},
+						"99f260f4-466c-4607-9a33-f7273b24f1b4": {
+    			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
+    			name: "6h of Monza Qualifiers",
+    			description: "This race will determine the starting grid for our next endurance event around Monza - the temple of speed!",
+    			image: "https://www.fia.com/sites/default/files/news/main_image/esports_release_image.jpeg",
+    			type: "Solo",
+				track: "Silverstone",
+    			category: ["GT3"],
+                gridSize: 1,
+                subscribers: ["35c62d76-8152-4626-8712-eeb96381bea8"],
+    			_createdOn: 1614760714812,
+    			_id: "99f260f4-466c-4607-9a33-f7273b24f1b4"
     		},
 			"07f260f4-466c-4607-9a33-f7273b24f1b3": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
