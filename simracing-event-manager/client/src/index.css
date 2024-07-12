@@ -57,6 +57,7 @@ body {
 
 .navbar-link {
   color:  #ffc107;
+  text-decoration: none;
 }
 
 .navbar-link a {
@@ -116,4 +117,12 @@ a:hover {
 
 .tr_first {
   border-top: 1px solid white;
+}
+
+.hover_row:hover {
+  background-color: #343a40;
+}
+
+.config {
+  color: white;
 }
