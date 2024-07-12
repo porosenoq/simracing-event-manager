@@ -1,5 +1,5 @@
 import { Button, Card, Col, Container, Form, Row } from 'react-bootstrap';
-import { create } from '../services/eventService';
+import { create } from '../../services/eventService';
 import { useNavigate } from 'react-router-dom';
 
 export default function CreateEvent() {
