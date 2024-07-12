@@ -17,7 +17,6 @@ export default function EventCard({event}) {
       setEventInfo(eventData);
     }
     loadEventData();
-    console.log('refresh event info');
   }, [gridFull, isSignedUp]);
 
   useEffect(() => {
@@ -26,12 +25,11 @@ export default function EventCard({event}) {
 
     const isSubscribed = eventInfo?.subscribers.some(s => s._id == auth._id);
     setIsSignedUp(isSubscribed);
-    console.log('run check for gridFull and isSignedUp');
   }, [eventInfo]);
 
   async function signUphandler() {
     const eventSubscribers = event.subscribers;
-    eventSubscribers.push({ _id: auth._id, username: auth.username });
+    eventSubscribers.push({ _id: auth._id });
     const response = await update(event._id, {...event, subscribers: eventSubscribers});
     console.log(response);
     setIsSignedUp(true);
