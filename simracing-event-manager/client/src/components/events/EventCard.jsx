@@ -9,17 +9,25 @@ export default function EventCard({event}) {
   const {auth} = useContext(AuthContext);
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [gridFull, setGridFull] = useState(false);
+  const [eventInfo, setEventInfo] = useState();
 
   useEffect(() => {
     async function loadEventData() {
       const eventData = await getById(event._id);
-      const isSubscribed = eventData.subscribers.includes(auth._id);
-      const full = eventData.subscribers.length == eventData.gridSize;
-      setGridFull(full);
-      setIsSignedUp(isSubscribed);
+      setEventInfo(eventData);
     }
     loadEventData();
-  }, []);
+    console.log('refresh event info');
+  }, [gridFull, isSignedUp]);
+
+  useEffect(() => {
+    const full = eventInfo?.subscribers.length == eventInfo?.gridSize;
+    setGridFull(full);
+
+    const isSubscribed = eventInfo?.subscribers.some(s => s._id == auth._id);
+    setIsSignedUp(isSubscribed);
+    console.log('run check for gridFull and isSignedUp');
+  }, [eventInfo]);
 
   async function signUphandler() {
     const eventSubscribers = event.subscribers;
@@ -49,7 +57,7 @@ export default function EventCard({event}) {
       <Card.Body className="event-list-buttons-container">
         {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
         {auth.email && !isSignedUp && !gridFull ? <Button onClick={() => signUphandler(event._id)} className="mx-2" variant="success">Sign up</Button> : null}
-        {gridFull ? <Button variant="warning mx-2">Grid is currently full</Button> : null}
+        {gridFull && !isSignedUp ? <Button variant="warning mx-2">Grid is currently full</Button> : null}
         {auth.email && isSignedUp ? <Button className="mx-2" variant="danger">Sign out</Button> : null}
       
       
