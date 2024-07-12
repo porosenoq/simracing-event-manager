@@ -2,7 +2,7 @@ import { del, get, post, put } from "../utils/request";
 
 
 const endpoints = {
-    teams: 'http://localhost:3030/data/teams/',
+    teams: `${import.meta.env.VITE_BASE_URL}/data/teams/`,
 }
 
 // TODO --> change user object

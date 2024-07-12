@@ -2,7 +2,7 @@ import { del, get, patch, post, putAdmin } from "../utils/request";
 
 
 const endpoints = {
-    events: 'http://localhost:3030/data/events',
+    events: `${import.meta.env.VITE_BASE_URL}/data/events`,
 }
 
 // TODO --> change user object

@@ -8,7 +8,7 @@ export default function EventTrackSelect() {
 
     useEffect(() => {
         async function loadTracks() {
-            const allTracks = await get("http://localhost:3030/data/tracks");
+            const allTracks = await get(`${import.meta.env.VITE_BASE_URL}/data/tracks`);
             setTracks(allTracks);
         }
         loadTracks();

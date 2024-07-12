@@ -14,7 +14,7 @@ export default function Header() {
 
   useEffect(() => {
     async function loadUserInfo() {
-      const currentUserInfo = await get(`http://localhost:3030/data/users_info?where=_ownerId%3D"${auth._id}"`);
+      const currentUserInfo = await get(`${import.meta.env.VITE_BASE_URL}/data/users_info?where=_ownerId%3D"${auth._id}"`);
       if(currentUserInfo.length) {
         setUserInfo(currentUserInfo[0]);
       } else {

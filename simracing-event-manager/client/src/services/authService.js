@@ -2,9 +2,9 @@ import { get, post } from "../utils/request";
 
 
 const endpoints = {
-    login: 'http://localhost:3030/users/login',
-    register: 'http://localhost:3030/users/register',
-    logout: 'http://localhost:3030/users/logout',
+    login: `${import.meta.env.VITE_BASE_URL}/users/login`,
+    register: `${import.meta.env.VITE_BASE_URL}/users/register`,
+    logout: `${import.meta.env.VITE_BASE_URL}/users/logout`,
 }
 
 // TODO --> change user object

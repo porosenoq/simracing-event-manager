@@ -1418,7 +1418,7 @@
     		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
     			name: "Bez Racing Team",
-    			image: "http://localhost:5173/brt_logo.jpg",
+    			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
     		},
