@@ -15,6 +15,7 @@ import MyEvents from '../events/MyEvents';
 import { UserProtectedRoutes } from '../protected-routes/UserProtectedRoutes';
 import Profile from '../profile/Profile';
 import TeamDetails from '../teams/TeamDetails';
+import MyTeams from '../teams/MyTeams';
 
 export default function MainContent() {
     return (
@@ -24,6 +25,7 @@ export default function MainContent() {
           <Route path="/events" element={<Events />}/>
           <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
+          <Route path="/teams/me" element={<MyTeams />}/>
           <Route path="/teams/:teamId" element={<TeamDetails />}/>
           <Route path="/drivers" element={<Drivers />}/>
             <Route element={<GuestProtectedRoutes />}>
