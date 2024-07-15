@@ -19,7 +19,6 @@ export default function Profile() {
     return(
         <>
             <h1>Username: {auth.username}</h1>
-            <h2>Elo: {auth.elo}</h2>
             {/* TODO - implement user profile edit functionality */}
         </>
     );
