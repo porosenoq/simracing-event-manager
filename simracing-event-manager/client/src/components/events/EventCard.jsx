@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, ListGroup } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 import { Link } from 'react-router-dom';
-import { getById, update } from '../../services/eventService';
+import { update } from '../../services/eventService';
 
 export default function EventCard({event}) {
 
@@ -13,8 +13,9 @@ export default function EventCard({event}) {
 
   useEffect(() => {
     async function loadEventData() {
-      const eventData = await getById(event._id);
-      setEventInfo(eventData);
+      //const eventData = await getById(event._id); // no need to make a request as we already pass the event through props
+      
+      setEventInfo(event);
     }
     loadEventData();
   }, [gridFull, isSignedUp]);
