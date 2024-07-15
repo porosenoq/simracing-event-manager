@@ -75,7 +75,7 @@ export default function MyEvents() {
                                 <Row key={s._id}>
                                     <Col md={8}>
                                         <p key={s._id}>
-                                            <Link className="navbar-link" to={`/events/${s._id}`}>{s.name}</Link>
+                                            <Link className="navbar-link" to={`/events/details/${s._id}`}>{s.name}</Link>
                                         </p>
                                     </Col>
                                     <Col md={3}>
