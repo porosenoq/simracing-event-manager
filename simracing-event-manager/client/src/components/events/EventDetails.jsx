@@ -21,6 +21,7 @@ export default function EventDetails() {
     }, []);
 
     const isSignedUp = event.subscribers?.some(s => s._id == auth._id);
+    const isFull = event.subscribers?.length == event.gridSize;
 
     return (
         <>    {/*     
@@ -124,8 +125,10 @@ export default function EventDetails() {
                     </tr> */}
                   </tbody>
                 </Table>
-              
-              {!isSignedUp ? <Button variant="success">Sign Up</Button> : <Button variant="danger">Sign Out</Button>}
+
+              {!isSignedUp && !isFull && <Button variant="success">Sign up</ Button>}
+              {isSignedUp && <Button variant="danger">Sign Out</Button>}
+              {isFull && <><Button disabled variant="warning">Grid is currently full</Button></>}
               
             </Card.Body>
           </Col>
