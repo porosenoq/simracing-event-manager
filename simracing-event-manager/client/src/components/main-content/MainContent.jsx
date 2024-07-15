@@ -14,6 +14,7 @@ import Logout from '../logout/Logout';
 import MyEvents from '../events/MyEvents';
 import { UserProtectedRoutes } from '../protected-routes/UserProtectedRoutes';
 import Profile from '../profile/Profile';
+import TeamDetails from '../teams/TeamDetails';
 
 export default function MainContent() {
     return (
@@ -23,9 +24,10 @@ export default function MainContent() {
           <Route path="/events" element={<Events />}/>
           <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
+          <Route path="/teams/:teamId" element={<TeamDetails />}/>
           <Route path="/drivers" element={<Drivers />}/>
-          <Route path="/profile/:id" element={<Profile />}/>
             <Route element={<GuestProtectedRoutes />}>
+              <Route path="/profile/:id" element={<Profile />}/>
               <Route path="/teams/create" element={<CreateTeam />} />
               <Route path="/events/create" element={<CreateEvent />} />
               <Route path="/events/me" element={<MyEvents />} />
