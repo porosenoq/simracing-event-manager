@@ -1382,6 +1382,11 @@
                     },
                     pitWindow: 43
                 },
+                sessionsLength: {
+                    p: 2,
+                    q: 15,
+                    r: 45
+                },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b1"
     		},
@@ -1418,6 +1423,11 @@
                         req: false,
                     },
                     pitWindow: 43
+                },
+                sessionsLength: {
+                    p: 2,
+                    q: 15,
+                    r: 45
                 },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b2"
@@ -1456,6 +1466,11 @@
                     },
                     pitWindow: 43
                 },
+                sessionsLength: {
+                    p: 2,
+                    q: 15,
+                    r: 45
+                },
     			_createdOn: 1614760714812,
     			_id: "99f260f4-466c-4607-9a33-f7273b24f1b4"
     		},
@@ -1492,6 +1507,11 @@
                         req: false,
                     },
                     pitWindow: 43
+                },
+                sessionsLength: {
+                    p: 2,
+                    q: 15,
+                    r: 45
                 },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b3"
