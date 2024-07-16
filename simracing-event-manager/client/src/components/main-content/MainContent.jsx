@@ -26,12 +26,12 @@ export default function MainContent() {
           <Route path="/events" element={<Events />}/>
           <Route path="/events/details/:id" element={<EventDetails />}/>
           <Route path="/teams" element={<Teams />}/>
-          <Route path="/teams/me" element={<MyTeams />}/>
           <Route path="/teams/:teamId" element={<TeamDetails />}/>
           <Route path="/drivers" element={<Drivers />}/>
             <Route element={<GuestProtectedRoutes />}>
               <Route path="/profile/:id" element={<Profile />}/>
               <Route path="/teams/create" element={<CreateTeam />} />
+              <Route path="/teams/me" element={<MyTeams />}/>
               <Route path="/events/create" element={<CreateEvent />} />
               <Route path="/events/configure/:id" element={<ConfigureEvent />} />
               <Route path="/events/me" element={<MyEvents />} />
