@@ -18,6 +18,22 @@ export default function CreateEvent() {
         const eventCategories = formData.getAll("category");
         eventData.category = eventCategories;
         eventData.subscribers = [];
+        eventData.minLicenseReq = '';
+        eventData.eloMultiplier = 1;
+        eventData.weather = {temp: 20, cloud: 0, rain: 0, randomness: 0};
+        eventData.ingameTimes = {p: '16:00', q: '16:00', r: '16:00'};
+        eventData.pitStop = {
+          refueling: {
+          req: false,
+          fixedTime: false,
+          time: null
+        }, 
+          tyreChange: {
+            req: false,
+          },
+          
+          pitWindow: 43
+        };
 
         try {
           const result = await create(eventData);
