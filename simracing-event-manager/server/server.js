@@ -1358,6 +1358,30 @@
     			category: ["GT3"],
                 gridSize: 24,
                 subscribers: [],
+                minLicenseReq: 'IRON',
+                eloMultiplier: 1,
+                weather: {
+                    temp: 20,
+                    cloud: 0,
+                    rain: 0,
+                    randomness: 0
+                },
+                ingameTimes: {
+                    p: '16:00',
+                    q: '16:00',
+                    r: '16:00',
+                },
+                pitStop: {
+                    refueling: {
+                        req: false,
+                        fixedTime: false,
+                        time: 0
+                    },
+                    tyreChange: {
+                        req: false,
+                    },
+                    pitWindow: 43
+                },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b1"
     		},
@@ -1371,6 +1395,30 @@
     			category: ["GT3"],
                 gridSize: 24,
                 subscribers: [{_id: "847ec027-f659-4086-8032-5173e2f9c93a", username: "George"}],
+                minLicenseReq: 'IRON',
+                eloMultiplier: 1,
+                weather: {
+                    temp: 20,
+                    cloud: 0,
+                    rain: 0,
+                    randomness: 0
+                },
+                ingameTimes: {
+                    p: '16:00',
+                    q: '16:00',
+                    r: '16:00',
+                },
+                pitStop: {
+                    refueling: {
+                        req: false,
+                        fixedTime: false,
+                        time: 0
+                    },
+                    tyreChange: {
+                        req: false,
+                    },
+                    pitWindow: 43
+                },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b2"
     		},
@@ -1384,6 +1432,30 @@
     			category: ["GT3"],
                 gridSize: 1,
                 subscribers: ["35c62d76-8152-4626-8712-eeb96381bea8"],
+                minLicenseReq: 'IRON',
+                eloMultiplier: 1,
+                weather: {
+                    temp: 20,
+                    cloud: 0,
+                    rain: 0,
+                    randomness: 0
+                },
+                ingameTimes: {
+                    p: '16:00',
+                    q: '16:00',
+                    r: '16:00',
+                },
+                pitStop: {
+                    refueling: {
+                        req: false,
+                        fixedTime: false,
+                        time: 0
+                    },
+                    tyreChange: {
+                        req: false,
+                    },
+                    pitWindow: 43
+                },
     			_createdOn: 1614760714812,
     			_id: "99f260f4-466c-4607-9a33-f7273b24f1b4"
     		},
@@ -1397,12 +1469,36 @@
     			category: ["GT3"],
                 gridSize: 24,
                 subscribers: [],
+                minLicenseReq: 'IRON',
+                eloMultiplier: 1,
+                weather: {
+                    temp: 20,
+                    cloud: 0,
+                    rain: 0,
+                    randomness: 0
+                },
+                ingameTimes: {
+                    p: '16:00',
+                    q: '16:00',
+                    r: '16:00',
+                },
+                pitStop: {
+                    refueling: {
+                        req: false,
+                        fixedTime: false,
+                        time: 0
+                    },
+                    tyreChange: {
+                        req: false,
+                    },
+                    pitWindow: 43
+                },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b3"
     		},
 			"07f260f4-466c-4607-9a33-f7273b24f1b4": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "6h of Monza Qualifiers",
+    			name: "6h of Monza Endurance",
     			description: "This race will determine the starting grid for our next endurance event around Monza - the temple of speed!",
     			image: "https://www.fia.com/sites/default/files/news/main_image/esports_release_image.jpeg",
     			type: "Solo",
@@ -1410,6 +1506,35 @@
     			category: ["GT3"],
                 gridSize: 24,
                 subscribers: [],
+                minLicenseReq: 'IRON',
+                eloMultiplier: 1,
+                weather: {
+                    temp: 20,
+                    cloud: 0,
+                    rain: 0,
+                    randomness: 0
+                },
+                ingameTimes: {
+                    p: '16:00',
+                    q: '16:00',
+                    r: '16:00',
+                },
+                pitStop: {
+                    refueling: {
+                        req: true,
+                        fixedTime: 25,
+                        time: 10
+                    },
+                    tyreChange: {
+                        req: false,
+                    },
+                    pitWindow: 45
+                },
+                sessionsLength: {
+                    p: 2,
+                    q: 15,
+                    r: 45
+                },
     			_createdOn: 1614760714812,
     			_id: "07f260f4-466c-4607-9a33-f7273b24f1b4"
     		}
