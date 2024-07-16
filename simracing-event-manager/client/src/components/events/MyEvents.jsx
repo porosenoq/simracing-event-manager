@@ -47,7 +47,7 @@ export default function MyEvents() {
                                             <CheckCircle className="mx-1" size="24" color="#198754"/>
                                         </OverlayTrigger>
                                         <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Configure</Tooltip>}>
-                                            <Link className="config" to={`/events/${e._id}/configure`}>
+                                            <Link className="config" to={`/events/configure/${e._id}`}>
                                                 <Gear className="mx-1" size="24" />
                                             </Link>
                                         </ OverlayTrigger>
