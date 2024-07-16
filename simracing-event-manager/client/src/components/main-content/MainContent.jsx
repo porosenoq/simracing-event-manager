@@ -16,6 +16,7 @@ import { UserProtectedRoutes } from '../protected-routes/UserProtectedRoutes';
 import Profile from '../profile/Profile';
 import TeamDetails from '../teams/TeamDetails';
 import MyTeams from '../teams/MyTeams';
+import ConfigureEvent from '../events/ConfigureEvent';
 
 export default function MainContent() {
     return (
@@ -32,6 +33,7 @@ export default function MainContent() {
               <Route path="/profile/:id" element={<Profile />}/>
               <Route path="/teams/create" element={<CreateTeam />} />
               <Route path="/events/create" element={<CreateEvent />} />
+              <Route path="/events/configure/:id" element={<ConfigureEvent />} />
               <Route path="/events/me" element={<MyEvents />} />
               <Route path="/logout" element={<Logout />}/>
             </Route>
