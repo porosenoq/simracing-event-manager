@@ -13,12 +13,12 @@ export default function ConfigureEvent() {
             setEvent(eventData);
         })();
     }, []);
-    
+
     return(
         <>
         <h2>Configure</h2>
 
-        {event.name}
+        {event?.name}
         </>
     );
 }
