@@ -33,7 +33,7 @@ export default function Header() {
     <>
       <Navbar bg="dark" data-bs-theme="dark" className="py-0">
         <Container>
-          <Navbar.Brand href="#home">
+          <Navbar.Brand as={Link} to={'/'}>
           <Image className="logoPic mx-3" src="/brt_logo.jpg" />
             Simracing Event Manager
             </Navbar.Brand>
