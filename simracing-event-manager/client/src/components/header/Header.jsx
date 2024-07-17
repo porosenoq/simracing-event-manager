@@ -31,14 +31,14 @@ export default function Header() {
   
   return (
     <>
-      <Navbar collapseOnSelect expand='sm' bg="dark" data-bs-theme="dark" className="py-0">
+      <Navbar collapseOnSelect expand='sm' bg="dark" data-bs-theme="dark" className="py-1">
         <Container>
           <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
+            <Navbar.Collapse id="responsive-navbar-nav">
           <Navbar.Brand as={Link} to={'/'}>
           <Image className="logoPic mx-3" src="/brt_logo.jpg" />
             Simracing Event Manager
             </Navbar.Brand>
-            <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} className="navbar-link" to="/">Home</Nav.Link>
             {auth.email ? 
