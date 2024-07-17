@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { Badge, Button, Card, Col, ListGroup } from 'react-bootstrap';
+import { Badge, Button, Card, Col, ListGroup, Spinner } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 import { Link } from 'react-router-dom';
 import { update } from '../../services/eventService';
@@ -10,6 +10,7 @@ export default function EventCard({event}) {
   const [isSignedUp, setIsSignedUp] = useState(false);
   const [gridFull, setGridFull] = useState(false);
   const [eventInfo, setEventInfo] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function loadEventData() {
@@ -29,18 +30,22 @@ export default function EventCard({event}) {
   }, [eventInfo]);
 
   async function signUphandler() {
+    setIsLoading(true);
     const eventSubscribers = event.subscribers;
-    eventSubscribers.push({ _id: auth._id });
     await update(event._id, {...event, subscribers: eventSubscribers});
+    eventSubscribers.push({ _id: auth._id });
+    setIsLoading(false);
     setIsSignedUp(true);
   }
 
   async function signOutHandler() {
+    setIsLoading(true);
     const eventSubscribers = event.subscribers;
     const subscription = eventSubscribers.findIndex(s => s._id == auth._id);
-    eventSubscribers.splice(subscription, 1);
     await update(event._id, {...event, subscribers: eventSubscribers});
+    eventSubscribers.splice(subscription, 1);
     setIsSignedUp(false);
+    setIsLoading(false);
   }
 
     return (
@@ -62,9 +67,29 @@ export default function EventCard({event}) {
           </ListGroup>
           <Card.Body className="event-list-buttons-container">
            {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
-           {auth.email && !isSignedUp && !gridFull ? <Button onClick={() => signUphandler(event._id)} className="mx-2" variant="success">Sign up</Button> : null}
+           {auth.email && !isSignedUp && !gridFull ? <Button disabled={isLoading} onClick={() => signUphandler(event._id)} className="mx-2" variant="success">{isLoading ? 
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              /> Loading...
+            </> : 
+            'Sign up'}</Button> : null}
            {gridFull && !isSignedUp && auth.email ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
-           {auth.email && isSignedUp ? <Button onClick={() => signOutHandler(event._id)} className="mx-2" variant="danger">Sign out</Button> : null}
+           {auth.email && isSignedUp ? <Button disabled={isLoading} onClick={() => signOutHandler(event._id)} className="mx-2" variant="danger">{isLoading ? 
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              Loading...
+            </> : 'Sign out'}</Button> : null}
           </Card.Body>
           </Card>
         </Col>
