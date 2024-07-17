@@ -4,7 +4,7 @@ export default function EventCardPlaceholder() {
     return(
         <Col md={3} className="my-3">
           <Card className="bg-dark text-white event-card" style={{ width: '20rem', marginLeft: 'auto', marginRight: 'auto' }}>
-          <Card.Img variant="top" className="card-image-h" src={import.meta.env.VITE_PUBLIC_DIR + 'Placeholder_image.png'} />
+          <Card.Img variant="top" className="card-image-h" src="./Placeholder_image.png" />
           <Card.Body>
           <Placeholder as={Card.Title} animation="glow">
             <Placeholder xs={6} />
