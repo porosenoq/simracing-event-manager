@@ -6,10 +6,11 @@ import { getRecent } from '../../services/eventService';
 import AuthContext from '../../contexts/authContext';
 
 import EventCard from '../events/EventCard';
+import EventCardPlaceholder from '../events/EventCardPlaceholder';
 
 export default function Home() {
 
-    const [events, setEvents] = useState();
+    const [events, setEvents] = useState([<EventCardPlaceholder key='1' />, <EventCardPlaceholder key='2' />,<EventCardPlaceholder key='3' />,<EventCardPlaceholder key='4' />]);
     const [isLoading, setIsLoading] = useState(false);
 
     const {logoutHandler} = useContext(AuthContext);
@@ -59,7 +60,6 @@ export default function Home() {
         <Row className="mx-4">
 
         {/* must display recent 4 */}
-
             {events}
          </Row>
          <Row className="mx-0">

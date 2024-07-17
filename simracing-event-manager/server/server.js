@@ -118,7 +118,7 @@
 
             res.writeHead(status, headers);
             if (context != undefined && context.util != undefined && context.util.throttle) {
-                await new Promise(r => setTimeout(r, 500 + Math.random() * 500));
+                await new Promise(r => setTimeout(r, 1000 + Math.random() * 500));
             }
             res.end(result);
 

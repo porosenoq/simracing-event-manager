@@ -45,7 +45,6 @@ export default function EventCard({event}) {
     setIsSignedUp(false);
     setIsLoading(false);
   }
-
     return (
         <Col md={3} className="my-3">
           <Card className="bg-dark text-white event-card" style={{ width: '20rem', marginLeft: 'auto', marginRight: 'auto' }}>

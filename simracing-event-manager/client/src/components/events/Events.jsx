@@ -4,10 +4,11 @@ import { useContext, useEffect, useState } from 'react';
 import { getAll } from '../../services/eventService';
 import { useNavigate } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
+import EventCardPlaceholder from './EventCardPlaceholder';
 
 export default function Events() {
 
-    const [events, setEvents] = useState();
+    const [events, setEvents] = useState([<EventCardPlaceholder key='1' />,<EventCardPlaceholder key='2' />,<EventCardPlaceholder key='3' />,<EventCardPlaceholder key='4' />]);
     const [eventsArr, setEventsArr] = useState();
     const [searchTerm, setSearchTerm] = useState('');
     const [searchCriteria, setSearchCriteria] = useState('');
