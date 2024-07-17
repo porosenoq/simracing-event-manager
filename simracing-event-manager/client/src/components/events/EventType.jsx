@@ -1,6 +1,6 @@
 import { Col, Form, Row } from 'react-bootstrap';
 
-export default function EventType() {
+export default function EventType({changeHandler}) {
     return (
         <>
             <Form.Group>
@@ -16,6 +16,7 @@ export default function EventType() {
                     value="Solo"
                     id={`reverse-radio-1`}
                     inline
+                    onChange={changeHandler}
                   />
                   <Form.Check
                     reverse
@@ -25,6 +26,7 @@ export default function EventType() {
                     value="Team"
                     id={`reverse-radio-2`}
                     inline
+                    onChange={changeHandler}
                   />
                   <Form.Check
                     reverse
@@ -34,6 +36,7 @@ export default function EventType() {
                     value="Both"
                     id={`reverse-radio-3`}
                     inline
+                    onChange={changeHandler}
                   />
                 </Col>
                 </Row>
