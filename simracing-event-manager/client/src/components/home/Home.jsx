@@ -26,6 +26,7 @@ export default function Home() {
                 setEvents(eventsList);
                 setIsLoading(false);
             } catch(err) {
+                setIsLoading(false);
                 if(err.message == "Invalid access token") {
                     logoutHandler();
                     navigate('/login');
