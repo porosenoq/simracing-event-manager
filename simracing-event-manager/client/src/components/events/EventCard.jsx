@@ -14,8 +14,6 @@ export default function EventCard({event}) {
 
   useEffect(() => {
     async function loadEventData() {
-      //const eventData = await getById(event._id); // no need to make a request as we already pass the event through props
-
       setEventInfo(event);
     }
     loadEventData();
@@ -67,7 +65,8 @@ export default function EventCard({event}) {
           </ListGroup>
           <Card.Body className="event-list-buttons-container">
            {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
-           {auth.email && !isSignedUp && !gridFull ? <Button disabled={isLoading} onClick={() => signUphandler(event._id)} className="mx-2" variant="success">{isLoading ? 
+           {auth.email && !isSignedUp && !gridFull ? 
+           <Button disabled={isLoading} onClick={() => signUphandler(event._id)} className="mx-2" variant="success">{isLoading ? 
             <>
               <Spinner
                 as="span"
@@ -77,7 +76,8 @@ export default function EventCard({event}) {
                 aria-hidden="true"
               /> Loading...
             </> : 
-            'Sign up'}</Button> : null}
+            'Sign up'}
+            </Button> : null}
            {gridFull && !isSignedUp && auth.email ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
            {auth.email && isSignedUp ? <Button disabled={isLoading} onClick={() => signOutHandler(event._id)} className="mx-2" variant="danger">{isLoading ? 
             <>

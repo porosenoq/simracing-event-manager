@@ -1,4 +1,4 @@
-import { Button, Col, Row } from 'react-bootstrap';
+import { Button, Col, Row, Spinner } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect, useState } from 'react';
 
@@ -10,16 +10,20 @@ import EventCard from '../events/EventCard';
 export default function Home() {
 
     const [events, setEvents] = useState();
+    const [isLoading, setIsLoading] = useState(false);
+
     const {logoutHandler} = useContext(AuthContext);
 
     const navigate = useNavigate();
 
     useEffect(() => {
         async function fetchData() {
+            setIsLoading(true);
             try{
                 const recentEvents = await getRecent();
                 const eventsList = recentEvents.map(event => <EventCard key={event._id} event={event}/>);
                 setEvents(eventsList);
+                setIsLoading(false);
             } catch(err) {
                 if(err.message == "Invalid access token") {
                     logoutHandler();
@@ -47,7 +51,8 @@ export default function Home() {
         </Row>
         <Row className="mx-0 my-3">
             <Col>
-                <h2>Upcoming events:</h2>
+                {isLoading ? <><Spinner animation="border" /><h1>Loading events...</h1></> : <><h2>Upcoming events:</h2></>}
+                
             </Col>
         </Row>
 
