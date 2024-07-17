@@ -15,7 +15,6 @@ export default function EventDetails() {
         async function loadEvent() {
             const event = await getById(id);
             setEvent(event);
-            console.log(event);
         }
         loadEvent();
     }, []);
