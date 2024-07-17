@@ -63,7 +63,7 @@ function App() {
   return (
     <>
     <AuthContext.Provider value={{loginSubmitHandler, registerSubmitHandler, logoutHandler, auth}}>
-      <Header user={auth}/>
+      <Header />
 
       <MainContent />
 
