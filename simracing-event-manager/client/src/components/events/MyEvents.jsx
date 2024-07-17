@@ -29,7 +29,7 @@ export default function MyEvents() {
             <Container className='bg-dark my-3 py-3 rounded'>
                 <Row>
                     <Col md={6}>
-                        <h2>Events created by me:</h2>
+                        <h2>My events:</h2>
                         <Row className="py-3">
                             <Col md={9}>Event:</Col>
                             <Col md={3}>Manage:</Col>
