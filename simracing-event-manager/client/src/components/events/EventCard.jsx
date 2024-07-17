@@ -63,7 +63,7 @@ export default function EventCard({event}) {
           <Card.Body className="event-list-buttons-container">
            {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
            {auth.email && !isSignedUp && !gridFull ? <Button onClick={() => signUphandler(event._id)} className="mx-2" variant="success">Sign up</Button> : null}
-           {gridFull && !isSignedUp ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
+           {gridFull && !isSignedUp && auth.email ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
            {auth.email && isSignedUp ? <Button onClick={() => signOutHandler(event._id)} className="mx-2" variant="danger">Sign out</Button> : null}
           </Card.Body>
           </Card>
