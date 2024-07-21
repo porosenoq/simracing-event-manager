@@ -1,26 +1,30 @@
 import { useContext, useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { getById } from '../../services/eventService';
-import { Badge, Button, Card, Col, Container, Image, Row, Table } from 'react-bootstrap';
+import { Badge, Button, Card, Col, Container, Image, Row, Spinner, Table } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
+import useEventSignUp from '../../hooks/useEventSignUp';
 
 export default function EventDetails() {
 
     const { auth } = useContext(AuthContext);
     const {id} = useParams();
 
-    const [event, setEvent] = useState({});
+    const [event, setEvent] = useState({loaded: false});
+    
+    const [isLoading, signedUpStatus, setSignedUpStatus, eventSignUpHandler, eventSignOutHandler] = useEventSignUp(event, auth._id);
 
     useEffect(() => {
-        async function loadEvent() {
-            const event = await getById(id);
-            setEvent(event);
-        }
-        loadEvent();
+      async function loadEvent() {
+        const event = await getById(id);
+        const alreadySubscribed = event.subscribers?.some(s => s._id == auth._id);
+        setSignedUpStatus(alreadySubscribed);
+        setEvent(event);
+      }
+      loadEvent();
     }, []);
-
-    const isSignedUp = event.subscribers?.some(s => s._id == auth._id);
-    const isFull = event.subscribers?.length == event.gridSize;
+    
+    const isFull = event.subscribers?.length == event?.gridSize;
 
     return (
       <>    
@@ -68,9 +72,21 @@ export default function EventDetails() {
                     </tbody>
                   </Table>
 
-                  {!isSignedUp && !isFull && <Button variant="success">Sign up</ Button>}
-                  {isSignedUp && <Button variant="danger">Sign Out</Button>}
-                  {isFull && !isSignedUp && <><Button disabled variant="warning">Grid is currently full</Button></>}
+                  {!signedUpStatus && !isFull && !isLoading && <Button onClick={eventSignUpHandler} variant="success">Sign up</ Button>}
+
+                  {!signedUpStatus && !isFull && isLoading && 
+                    <Button disabled={isLoading} onClick={eventSignUpHandler} variant="success">
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      /> Loading...
+                    </ Button>}
+
+                  {signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
+                  {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>}
               
                 </Card.Body>
                 </Col>

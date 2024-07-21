@@ -2,51 +2,28 @@ import { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, ListGroup, Spinner } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 import { Link } from 'react-router-dom';
-import { update } from '../../services/eventService';
+import { getById, update } from '../../services/eventService';
+import useEventSignUp from '../../hooks/useEventSignUp';
 
 export default function EventCard({event}) {
 
   const {auth} = useContext(AuthContext);
-  const [isSignedUp, setIsSignedUp] = useState(false);
+  
   const [gridFull, setGridFull] = useState(false);
-  const [eventInfo, setEventInfo] = useState();
-  const [isLoading, setIsLoading] = useState(false);
   const [subsCount, setSubsCount] = useState(0);
 
-  useEffect(() => {
-    async function loadEventData() {
-      setEventInfo(event);
-      setSubsCount(event.subscribers.length);
-    }
-    loadEventData();
-  }, [gridFull, isSignedUp]);
+  const [isLoading, signedUpStatus, setSignedUpStatus, eventSignUpHandler, eventSignOutHandler] = useEventSignUp(event, auth._id); 
 
   useEffect(() => {
-    const full = eventInfo?.subscribers.length == eventInfo?.gridSize;
+    const isSignedUp = event.subscribers.some(s => s._id == auth._id);
+    const subscriptionsCount = event.subscribers.length;
+    const full = event.subscribers.length == event.gridSize; 
+
+    setSubsCount(subscriptionsCount);
+    setSignedUpStatus(isSignedUp);
     setGridFull(full);
-
-    const isSubscribed = eventInfo?.subscribers.some(s => s._id == auth._id);
-    setIsSignedUp(isSubscribed);
-  }, [eventInfo]);
-
-  async function signUphandler() {
-    setIsLoading(true);
-    const eventSubscribers = event.subscribers;
-    eventSubscribers.push({ _id: auth._id });
-    await update(event._id, {...event, subscribers: eventSubscribers});
-    setIsLoading(false);
-    setIsSignedUp(true);
-  }
-
-  async function signOutHandler() {
-    setIsLoading(true);
-    const eventSubscribers = event.subscribers;
-    const subscription = eventSubscribers.findIndex(s => s._id == auth._id);
-    eventSubscribers.splice(subscription, 1);
-    await update(event._id, {...event, subscribers: eventSubscribers});
-    setIsSignedUp(false);
-    setIsLoading(false);
-  }
+  }, [signedUpStatus]);
+    
     return (
         <Col md={3} className="my-3">
           <Card className="bg-dark text-white event-card" style={{ width: '20rem', marginLeft: 'auto', marginRight: 'auto' }}>
@@ -66,8 +43,8 @@ export default function EventCard({event}) {
           </ListGroup>
           <Card.Body className="event-list-buttons-container">
            {!auth.email ? <><span>Want to participate?<Link className='navbar-link nav-link'>Login</Link></span></> : null}
-           {auth.email && !isSignedUp && !gridFull ? 
-           <Button disabled={isLoading} onClick={() => signUphandler(event._id)} className="mx-2" variant="success">{isLoading ? 
+           {auth.email && !signedUpStatus && !gridFull ? 
+           <Button disabled={isLoading} onClick={eventSignUpHandler} className="mx-2" variant="success">{isLoading ? 
             <>
               <Spinner
                 as="span"
@@ -79,8 +56,8 @@ export default function EventCard({event}) {
             </> : 
             'Sign up'}
             </Button> : null}
-           {gridFull && !isSignedUp && auth.email ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
-           {auth.email && isSignedUp ? <Button disabled={isLoading} onClick={() => signOutHandler(event._id)} className="mx-2" variant="danger">{isLoading ? 
+           {gridFull && !signedUpStatus && auth.email ? <Button disabled variant="warning mx-2">Grid is currently full</Button> : null}
+           {auth.email && signedUpStatus ? <Button disabled={isLoading} onClick={eventSignOutHandler} className="mx-2" variant="danger">{isLoading ? 
             <>
               <Spinner
                 as="span"
