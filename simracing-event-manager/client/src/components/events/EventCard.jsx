@@ -11,10 +11,12 @@ export default function EventCard({event}) {
   const [gridFull, setGridFull] = useState(false);
   const [eventInfo, setEventInfo] = useState();
   const [isLoading, setIsLoading] = useState(false);
+  const [subsCount, setSubsCount] = useState(0);
 
   useEffect(() => {
     async function loadEventData() {
       setEventInfo(event);
+      setSubsCount(event.subscribers.length);
     }
     loadEventData();
   }, [gridFull, isSignedUp]);
@@ -30,8 +32,8 @@ export default function EventCard({event}) {
   async function signUphandler() {
     setIsLoading(true);
     const eventSubscribers = event.subscribers;
-    await update(event._id, {...event, subscribers: eventSubscribers});
     eventSubscribers.push({ _id: auth._id });
+    await update(event._id, {...event, subscribers: eventSubscribers});
     setIsLoading(false);
     setIsSignedUp(true);
   }
@@ -40,8 +42,8 @@ export default function EventCard({event}) {
     setIsLoading(true);
     const eventSubscribers = event.subscribers;
     const subscription = eventSubscribers.findIndex(s => s._id == auth._id);
-    await update(event._id, {...event, subscribers: eventSubscribers});
     eventSubscribers.splice(subscription, 1);
+    await update(event._id, {...event, subscribers: eventSubscribers});
     setIsSignedUp(false);
     setIsLoading(false);
   }
@@ -56,7 +58,7 @@ export default function EventCard({event}) {
             </Card.Text>
           </Card.Body>
           <ListGroup className="list-group-flush event-list-items">
-            <ListGroup.Item className="bg-dark text-white event-list-items first-item">Registration: <Badge pill bg={gridFull ? 'danger' : 'success'}>{event.subscribers.length}/{event.gridSize}</Badge></ListGroup.Item>
+            <ListGroup.Item className="bg-dark text-white event-list-items first-item">Registration: <Badge pill bg={gridFull ? 'danger' : 'success'}>{subsCount}/{event.gridSize}</Badge></ListGroup.Item>
             <ListGroup.Item className="bg-dark text-white event-list-items">Event type: {event.type == 'both' ? 'Solo/Team' : event.type}</ListGroup.Item>
             <ListGroup.Item className="bg-dark text-white event-list-items">Category: {event.category.map(c => <span key={c} className='mx-1'>{c}</span>)}</ListGroup.Item>
             <ListGroup.Item className="bg-dark text-white event-list-items">Driver stint time: 60m</ListGroup.Item>
