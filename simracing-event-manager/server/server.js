@@ -1319,6 +1319,11 @@
     var identity = "email";
     var protectedData = {
     	users: {
+            "35c62d12-8152-4626-8712-eeb96381zae9": {
+    			email: "user@abv.bg",
+    			username: "User",
+    			hashedPassword: "83313014ed3e2391aa1332615d2f053cf5c1bfe05ca1cbcb5582443822df6eb1"
+    		},
     		"35c62d76-8152-4626-8712-eeb96381bea8": {
     			email: "peter@abv.bg",
     			username: "Peter",
@@ -1562,11 +1567,39 @@
     	teams: {
     		"34a1cab1-81f1-47e5-aec3-ab6c9810efe1": {
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
-    			name: "Bez Racing Team",
+    			name: "Peter's team",
     			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
-                members: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8"}],
+                members: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a"}],
+                applicants: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
+    		},
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe2": {
+    			_ownerId: "35c62d12-8152-4626-8712-eeb96381zae9",
+    			name: "User's team",
+    			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
+                members: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
+                applicants: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a"}],
+                _createdOn: 1615737591748,
+    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe2"
+    		},
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe3": {
+    			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
+    			name: "George's team",
+    			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
+                members: [{_id: "847ec027-f659-4086-8032-5173e2f9c93a"}, {_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
+                applicants: [],
+                _createdOn: 1615737591748,
+    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe3"
+    		},
+            "34a1cab1-81f1-47e5-aec3-ab6c9810efe4": {
+    			_ownerId: "847ec027-f659-4086-8032-5173e2f9d92b",
+    			name: "Team with no members or applicants",
+    			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
+                members: [],
+                applicants: [],
+                _createdOn: 1615737591748,
+    			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe4"
     		},
     	},
 		tracks: [
