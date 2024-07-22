@@ -17,6 +17,7 @@ export default function CreateTeam() {
       const formData = new FormData(e.target);
       const teamData = Object.fromEntries(formData);
       teamData.members = [{_id: auth._id}];
+      teamData.applicants = [];
 
       try {
         const team = await create(teamData);
