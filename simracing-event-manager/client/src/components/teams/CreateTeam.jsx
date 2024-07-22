@@ -7,22 +7,24 @@ import AuthContext from '../../contexts/authContext';
 export default function CreateTeam() {
 
   const navigate = useNavigate();
-  const {logoutHandler} = useContext(AuthContext);
+
+  const {logoutHandler, auth} = useContext(AuthContext);
+
+
 
   const submitHandler = async (e) => {
       e.preventDefault();
       const formData = new FormData(e.target);
       const teamData = Object.fromEntries(formData);
+      teamData.members = [{_id: auth._id}];
 
       try {
-        const result = await create(teamData);
-        console.log(result);
+        const team = await create(teamData);
+        navigate(`/teams/${team._id}`);
       } catch(err) {
         logoutHandler();
         navigate('/login')
       }
-      
-      navigate('/events');
   }
 
     return (

@@ -37,6 +37,10 @@ export default function Teams() {
         setSearchTerm(e.target.value);
       }
 
+      function teamApplicationHandler() {
+        console.log('apply')
+      }
+
     return(
         <>
             <Container className="p-3">
@@ -60,7 +64,7 @@ export default function Teams() {
                 </Form>
                 </Container>
                     <ListGroup>
-                        {teams?.map(t => <ListGroup.Item className="bg-dark text-white team_item" key={t._id}><Row><Col md={auth._id ? 8 : 12}><Image className="team_image rounded" src={t.image} /><Link className="navbar-link" to={`/teams/${t._id}`}>{t.name}</Link></Col>{auth._id ? <Col md="3" className="align-items-center d-flex"><Button size="sm" variant="success">Apply</Button></Col> : null }</Row></ListGroup.Item>)}
+                        {teams?.map(t => <ListGroup.Item className="bg-dark text-white team_item" key={t._id}><Row><Col><Image className="team_image rounded" src={t.image} /></Col><Col className="d-flex align-items-center"><Link className="navbar-link" to={`/teams/${t._id}`}>{t.name}</Link></Col>{auth._id ? <Col className="align-items-center d-flex"><Button onClick={teamApplicationHandler} size="sm" variant="success">Apply</Button></Col> : null }</Row></ListGroup.Item>)}
                         {!teams?.length ? `No results for "${searchCriteria}"` : null}
                     </ListGroup>
                 </Card.Body>
