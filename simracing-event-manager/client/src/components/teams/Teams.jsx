@@ -1,10 +1,10 @@
 import { useContext, useEffect, useState } from 'react';
-import { getAll } from '../../services/teamService';
-import { Button, Card, Col, Container, Form, Image, InputGroup, ListGroup, Row } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { getAll, teamApply } from '../../services/teamService';
+import { Button, Card, Container, Form, InputGroup, ListGroup } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 
 import "./teams.css";
+import TeamListItem from './TeamListItem';
 
 export default function Teams() {
 
@@ -24,7 +24,6 @@ export default function Teams() {
     }, []);
 
     function search(e) {
-        console.log('search for');
         e.preventDefault();
         const regex = new RegExp(`${searchTerm.toLowerCase()}`, 'g');
         let teamsList = teamsArr.filter(t => t.name.toLowerCase().match(regex));
@@ -37,8 +36,14 @@ export default function Teams() {
         setSearchTerm(e.target.value);
       }
 
-      function teamApplicationHandler() {
-        console.log('apply')
+      async function teamApplicationHandler(teamId) {
+        try {
+            const result = await teamApply(teamId, auth._id);
+            console.log(result);
+            // may add a modal to tell the user his application is pending
+        } catch (err) {
+            console.log(err);
+        }
       }
 
     return(
@@ -64,8 +69,15 @@ export default function Teams() {
                 </Form>
                 </Container>
                     <ListGroup>
-                        {teams?.map(t => <ListGroup.Item className="bg-dark text-white team_item" key={t._id}><Row><Col><Image className="team_image rounded" src={t.image} /></Col><Col className="d-flex align-items-center"><Link className="navbar-link" to={`/teams/${t._id}`}>{t.name}</Link></Col>{auth._id ? <Col className="align-items-center d-flex"><Button onClick={teamApplicationHandler} size="sm" variant="success">Apply</Button></Col> : null }</Row></ListGroup.Item>)}
-                        {!teams?.length ? `No results for "${searchCriteria}"` : null}
+                        {teams?.map(team => 
+                            <TeamListItem 
+                                key={team._id}
+                                teamApplicationHandler={teamApplicationHandler}
+                                auth={auth}
+                                team={team}
+                            />
+                        )}
+                    {!teams?.length ? `No results for "${searchCriteria}"` : null}
                     </ListGroup>
                 </Card.Body>
                 </Card>
