@@ -28,7 +28,7 @@ export default function ConfigureEvent() {
                         <Form>
                             <Form.Group className="mb-3" controlId="eventName">
                                 <Form.Label>Minumum license required</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="The minimum license a driver should have in order to be eligable for the event" />
+                                <Form.Control type="text" name="name" placeholder="IRON, SILVER, GOLD..." />
                                 <Form.Text className="text-muted">
                                     {/*{errors ? errors : null}*/}
                                 </Form.Text>

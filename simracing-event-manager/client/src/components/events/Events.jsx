@@ -9,7 +9,7 @@ import EventCardPlaceholder from './EventCardPlaceholder';
 export default function Events() {
 
     const [events, setEvents] = useState([<EventCardPlaceholder key='1' />,<EventCardPlaceholder key='2' />,<EventCardPlaceholder key='3' />,<EventCardPlaceholder key='4' />]);
-    const [eventsArr, setEventsArr] = useState();
+    const [eventsArr, setEventsArr] = useState([]);
     const [searchTerm, setSearchTerm] = useState('');
     const [searchCriteria, setSearchCriteria] = useState('');
     const [isLoading, setIsLoading] = useState(false);
@@ -66,7 +66,7 @@ export default function Events() {
                             value={searchTerm}
                             id="searchField"
                         />
-                    <Button variant="warning" id="button-addon2">Search</Button>
+                    <Button type="submit" variant="warning" id="button-addon2">Search</Button>
                     </InputGroup>
                 </Form>
                 <div className="container">

@@ -2,7 +2,6 @@ import { useContext, useEffect, useState } from 'react';
 import { Badge, Button, Card, Col, ListGroup, Spinner } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 import { Link } from 'react-router-dom';
-import { getById, update } from '../../services/eventService';
 import useEventSignUp from '../../hooks/useEventSignUp';
 
 export default function EventCard({event}) {
