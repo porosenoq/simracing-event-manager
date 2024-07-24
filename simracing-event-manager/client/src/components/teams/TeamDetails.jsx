@@ -161,16 +161,16 @@ export default function TeamDetails() {
 													<div className="m-b-25">
 															<Image className="img-radius" src={team.image}/ >
 													</div>
-													<h6 className="f-w-600">{team.name}</h6>
+													<h5 className="f-w-600">{team.name}</h5>
 													<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
 										<div className="col-sm-8 bg-dark">
 											<div className="card-block bg-dark text-white">
-												<h6 className="m-b-20 p-b-5 b-b-default f-w-600">Members</h6>
+												<h5 className="m-b-20 p-b-5 b-b-default f-w-600">Members</h5>
 												<div className="row">
 														<div className="col-sm-12">
-																{team.members?.map(m => <p key={m._id} className="m-b-10 f-w-600">{m.username}{team._ownerId == auth._id && m._id != auth._id &&
+																{team.members?.map(m => <h5 key={m._id} className="m-b-10 f-w-600">{m.username}{team._ownerId == auth._id && m._id != auth._id &&
 																				<>
 																						<OverlayTrigger overlay={<Tooltip id="tooltip-accept">Remove member!</Tooltip>}>
 																						<Button
@@ -183,17 +183,17 @@ export default function TeamDetails() {
 																						</Button>
 																						</OverlayTrigger>
 																				</>
-																		}</p>)}
+																		}</h5>)}
 																
 																{team.members?.length == 0 && <h6 className=" f-w-600">no members yet</h6>}
 																<p className="m-b-10 f-w-600"></p>
 														</div>
 												</div>
-												<h6 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Pending applications</h6>
+												<h5 className="m-b-20 m-t-40 p-b-5 b-b-default f-w-600">Pending applications</h5>
 												<div className="row">
 																<div className="col-sm-12">
 																{team.applicants?.map(a =>
-																<p key={a._id} className="m-b-10 f-w-600">
+																<h5 key={a._id} className="m-b-10 f-w-600">
 																		{a.username}
 																		{team._ownerId == auth._id && 
 																				<>
@@ -220,7 +220,7 @@ export default function TeamDetails() {
 																				</>
 																		}
 																		
-																</p>)}
+																</h5>)}
 																{team.applicants?.length == 0 && <h6 className="f-w-600">no applications yet</h6>}
 														</div>
 												</div>
