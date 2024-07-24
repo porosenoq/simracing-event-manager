@@ -15,6 +15,11 @@ export default function ConfigureEvent() {
         })();
     }, []);
 
+
+    function handleChange() {
+
+    }
+
     return(
         <>
             <Container style={{width: "800px"}} className='bg-dark text-white py-3 px-5 my-3 rounded'>
@@ -28,7 +33,7 @@ export default function ConfigureEvent() {
                         <Form>
                             <Form.Group className="mb-3" controlId="eventName">
                                 <Form.Label>Minumum license required</Form.Label>
-                                <Form.Control type="text" name="name" placeholder="IRON, SILVER, GOLD..." />
+                                <Form.Control value={event?.minLicenseReq} type="text" name="name" placeholder="IRON, SILVER, GOLD..." />
                                 <Form.Text className="text-muted">
                                     {/*{errors ? errors : null}*/}
                                 </Form.Text>
@@ -36,7 +41,7 @@ export default function ConfigureEvent() {
 
                             <Form.Group className="mb-3" controlId="eventDescription">
                                 <Form.Label>Elo multiplier</Form.Label>
-                                <Form.Control type="number" name="description" placeholder="elo multiplier" />
+                                <Form.Control value={event?.eloMultiplier} type="number" name="description" placeholder="elo multiplier" />
                                 <Form.Text className="text-muted">
                                     {/*{errors ? errors : null}*/}
                                 </Form.Text>
@@ -45,39 +50,46 @@ export default function ConfigureEvent() {
                             <Form.Group className="mb-3" controlId="eventImage">
                                 <Form.Label>Weather</Form.Label>
                                 <Form.Control
+                                    value={event?.weather.temp}
+                                    onChange={handleChange}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Ambient temperature in °C" />
                                 <Form.Control
+                                    value={event?.weather.cloud}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Cloud level in %" />
                                 <Form.Control
+                                    value={event?.weather.rain}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Probability of rain in %" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
                                 <Form.Label>Ingame times</Form.Label>
                                 <Form.Control
+                                    value={event?.ingameTimes.p}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Practice session time" />
                                 <Form.Control
+                                    value={event?.ingameTimes.q}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Qialification session time" />
                                 <Form.Control
+                                    value={event?.ingameTimes.r}
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Race session time" />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
@@ -86,17 +98,17 @@ export default function ConfigureEvent() {
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="pitstop..." />
                                 <Form.Control
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="pitstop..." />
                                 <Form.Control
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="pitstop..." />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
@@ -105,17 +117,17 @@ export default function ConfigureEvent() {
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Practice session length" />
                                 <Form.Control
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Qialification session length" />
                                 <Form.Control
                                     className="mb-3"
                                     type="text"
                                     name="image"
-                                    placeholder="URL to event image" />
+                                    placeholder="Race session length" />
                             </Form.Group>
 
                             <Button variant="success">Save configuration</Button>
