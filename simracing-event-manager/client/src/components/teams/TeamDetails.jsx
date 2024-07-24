@@ -2,7 +2,7 @@ import { useContext, useEffect, useState } from 'react';
 import { getById, update } from '../../services/teamService';
 import { useParams } from 'react-router-dom';
 import { Button, Container, Image, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { CheckLg, XLg } from 'react-bootstrap-icons';
+import { CheckLg, PersonDashFill, PersonPlusFill, PersonXFill, XLg } from 'react-bootstrap-icons';
 
 import "./teams.css";
 import "./teams_card.css";
@@ -15,6 +15,7 @@ export default function TeamDetails() {
 	const [team, setTeam] = useState({});
 	const [showAccept, setShowAccept] = useState(false);
 	const [showDeny, setShowDeny] = useState(false);
+	const [showRemove, setShowRemove] = useState(false);
 	const [currentModalusername, setCurrentModalUsername] = useState('');
 	const [currentModalId, setCurrentModalId] = useState('');
 
@@ -53,9 +54,9 @@ export default function TeamDetails() {
 					console.log('remove user from applicants');
 					const teamApplicants = [...team.applicants];
 					const index = teamApplicants.findIndex(a => a._id == userId);
-					const memberToRemove = teamApplicants.splice(index, 1);
+					const applicantToRemove = teamApplicants.splice(index, 1);
 
-					console.log(memberToRemove);
+					console.log(applicantToRemove);
 
 					setTeam(oldState => ({...oldState, applicants: [...teamApplicants]}));
 
@@ -64,6 +65,22 @@ export default function TeamDetails() {
 					persistStateOnBackend(newState);
 			}
 			setShowDeny(false);
+		} else if(modal == 'remove') {
+			if(choice) {
+					console.log('remove user from members');
+					const teamMembers = [...team.members];
+					const index = teamMembers.findIndex(m => m._id == userId);
+					const memberToRemove = teamMembers.splice(index, 1);
+
+					console.log(memberToRemove);
+
+					setTeam(oldState => ({...oldState, members: [...teamMembers]}));
+
+					const newState = {...team, members: [...teamMembers]};
+
+					persistStateOnBackend(newState);
+			}
+			setShowRemove(false);
 		}
 	}
 
@@ -77,6 +94,12 @@ export default function TeamDetails() {
 		setCurrentModalUsername(username);
 		setCurrentModalId(id);
 		setShowDeny(true);
+	}
+
+	function handleRemove(username, id) {
+		setCurrentModalUsername(username);
+		setCurrentModalId(id);
+		setShowRemove(true);
 	}
 
 	return(
@@ -111,6 +134,21 @@ export default function TeamDetails() {
 				</Modal.Footer>
 			</Modal>
 
+			<Modal show={showRemove} onHide={() => {handleClose('remove', false)}}>
+				<Modal.Header closeButton>
+					<Modal.Title>Are you sure you want to remove {currentModalusername} from team?</Modal.Title>
+				</Modal.Header>
+				<Modal.Body>id: {currentModalId}</Modal.Body>
+				<Modal.Footer>
+					<Button variant="success" onClick={() => {handleClose('remove', true)}}>
+							Yes
+					</Button>
+					<Button variant="danger" onClick={() => {handleClose('remove', false)}}>
+							No
+					</Button>
+				</Modal.Footer>
+			</Modal>
+
 			<Container className="py-3 my-3 rounded">
 				<div className="page-content page-container" id="page-content">
 					<div className="padding">
@@ -132,7 +170,21 @@ export default function TeamDetails() {
 												<h6 className="m-b-20 p-b-5 b-b-default f-w-600">Members</h6>
 												<div className="row">
 														<div className="col-sm-12">
-																{team.members?.map(m => <p key={m._id} className="m-b-10 f-w-600">{m.username}</p>)}
+																{team.members?.map(m => <p key={m._id} className="m-b-10 f-w-600">{m.username}{team._ownerId == auth._id && m._id != auth._id &&
+																				<>
+																						<OverlayTrigger overlay={<Tooltip id="tooltip-accept">Remove member!</Tooltip>}>
+																						<Button
+																								onClick={() => handleRemove(m.email, m._id)}
+																								variant="danger" 
+																								size="sm"
+																								className="mx-2"
+																						>
+																								<PersonDashFill />
+																						</Button>
+																						</OverlayTrigger>
+																				</>
+																		}</p>)}
+																
 																{team.members?.length == 0 && <h6 className=" f-w-600">no members yet</h6>}
 																<p className="m-b-10 f-w-600"></p>
 														</div>
@@ -152,7 +204,7 @@ export default function TeamDetails() {
 																								size="sm"
 																								className="mx-2"
 																						>
-																								<CheckLg />
+																								<PersonPlusFill />
 																						</Button>
 																						</OverlayTrigger>
 																						<OverlayTrigger overlay={<Tooltip id="tooltip-accept">Deny!</Tooltip>}>
@@ -162,7 +214,7 @@ export default function TeamDetails() {
 																								size="sm"
 																								className="mx-2"
 																						>
-																								<XLg />
+																								<PersonDashFill />
 																						</Button>
 																						</OverlayTrigger>
 																				</>
