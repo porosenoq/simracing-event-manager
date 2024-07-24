@@ -86,7 +86,10 @@ export default function EventDetails() {
                     </ Button>}
 
                   {auth._id && signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
-                  {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>}
+
+                  {/* {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>} */}
+
+									{isFull && auth._id && <><Button disabled variant="warning">Grid is currently full</Button></>}
 
                   {!auth._id && <>Want to participate? <Link className="navbar-link" to={'/login'}>Login</Link></>}
               
