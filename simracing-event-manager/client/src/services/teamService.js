@@ -44,10 +44,10 @@ export async function getTeamApplicants(id) {
     return applicants;
 }
 
-export async function teamApply(teamId, applicantId) {
+export async function teamApply(teamId, {_id, username, email}) {
     const oldData = await getById(teamId);
     const oldApplicants = oldData.applicants;
-    const data = {...oldData, applicants: [...oldApplicants, {_id: applicantId}]};
+    const data = {...oldData, applicants: [...oldApplicants, {_id, username, email}]};
     const result = await putAdmin(endpoints.teams + teamId, data);
     return result;
 }

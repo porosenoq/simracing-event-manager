@@ -34,7 +34,7 @@ export default function TeamListItem({teamApplicationHandler, auth, team}) {
                     {auth._id ? 
                 <Col className="align-items-center d-flex">
                     {!hasApplied && !isMember? 
-                        <Button onClick={() => {teamApplicationHandler(team._id); setApplicants(oldState => [...oldState, {_id: auth._id}])}} size="sm" variant="success">Apply</Button> : 
+                        <Button onClick={() => {teamApplicationHandler(team._id); setApplicants(oldState => [...oldState, {_id: auth._id, username: auth.username}])}} size="sm" variant="success">Apply</Button> : 
                         null
                         }
                     {hasApplied && 'Your application is pending...'}

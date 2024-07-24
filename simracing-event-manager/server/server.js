@@ -1569,8 +1569,8 @@
     			_ownerId: "35c62d76-8152-4626-8712-eeb96381bea8",
     			name: "Peter's team",
     			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
-                members: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a"}],
-                applicants: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
+                members: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8", username: "Peter", email: "peter@abv.bg"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a", username: "George", email: "george@abv.bg"}],
+                applicants: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9", username: "User", email: "user@abv.bg"}],
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe1"
     		},
@@ -1578,8 +1578,8 @@
     			_ownerId: "35c62d12-8152-4626-8712-eeb96381zae9",
     			name: "User's team",
     			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
-                members: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
-                applicants: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a"}],
+                members: [{_id: "35c62d12-8152-4626-8712-eeb96381zae9", username: "User", email: "user@abv.bg"}],
+                applicants: [{_id: "35c62d76-8152-4626-8712-eeb96381bea8", username: "Peter", email: "peter@abv.bg"}, {_id: "847ec027-f659-4086-8032-5173e2f9c93a", username: "George", email: "george@abv.bg"}],
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe2"
     		},
@@ -1587,7 +1587,7 @@
     			_ownerId: "847ec027-f659-4086-8032-5173e2f9c93a",
     			name: "George's team",
     			image: "https://yt3.googleusercontent.com/PuG-L5OU5u1h5-Muk3cjvGCBG_kvaFgUogN69OuJ2hd-KDATN3JIo-NqCaN7IwaXw-ogJdng=s900-c-k-c0x00ffffff-no-rj",
-                members: [{_id: "847ec027-f659-4086-8032-5173e2f9c93a"}, {_id: "35c62d76-8152-4626-8712-eeb96381bea8"}, {_id: "35c62d12-8152-4626-8712-eeb96381zae9"}],
+                members: [{_id: "847ec027-f659-4086-8032-5173e2f9c93a", username: "George", email: "george@abv.bg"}, {_id: "35c62d76-8152-4626-8712-eeb96381bea8", username: "Peter", email: "peter@abv.bg"}, {_id: "35c62d12-8152-4626-8712-eeb96381zae9", username: "User", email: "user@abv.bg"}],
                 applicants: [],
                 _createdOn: 1615737591748,
     			_id: "34a1cab1-81f1-47e5-aec3-ab6c9810efe3"

@@ -38,7 +38,7 @@ export default function Teams() {
 
       async function teamApplicationHandler(teamId) {
         try {
-            const result = await teamApply(teamId, auth._id);
+            const result = await teamApply(teamId, auth);
             console.log(result);
             // may add a modal to tell the user his application is pending
         } catch (err) {
