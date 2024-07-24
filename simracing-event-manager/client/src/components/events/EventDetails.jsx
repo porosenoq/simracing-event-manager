@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 import { getById } from '../../services/eventService';
 import { Badge, Button, Card, Col, Container, Image, Row, Spinner, Table } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
@@ -87,6 +87,8 @@ export default function EventDetails() {
 
                   {auth._id && signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
                   {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>}
+
+                  {!auth._id && <>Want to participate? <Link className="navbar-link" to={'/login'}>Login</Link></>}
               
                 </Card.Body>
                 </Col>
