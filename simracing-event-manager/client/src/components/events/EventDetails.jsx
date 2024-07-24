@@ -72,7 +72,7 @@ export default function EventDetails() {
                     </tbody>
                   </Table>
 
-                  {!signedUpStatus && !isFull && !isLoading && <Button onClick={eventSignUpHandler} variant="success">Sign up</ Button>}
+                  {auth._id && !signedUpStatus && !isFull && !isLoading && <Button onClick={eventSignUpHandler} variant="success">Sign up</ Button>}
 
                   {!signedUpStatus && !isFull && isLoading && 
                     <Button disabled={isLoading} onClick={eventSignUpHandler} variant="success">
@@ -85,7 +85,7 @@ export default function EventDetails() {
                       /> Loading...
                     </ Button>}
 
-                  {signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
+                  {auth._id && signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
                   {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>}
               
                 </Card.Body>
