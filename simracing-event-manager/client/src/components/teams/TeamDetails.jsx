@@ -1,8 +1,8 @@
 import { useContext, useEffect, useState } from 'react';
-import { getById, update } from '../../services/teamService';
+import { getById, teamApply, update } from '../../services/teamService';
 import { useParams } from 'react-router-dom';
 import { Button, Container, Image, Modal, OverlayTrigger, Tooltip } from 'react-bootstrap';
-import { CheckLg, PersonDashFill, PersonPlusFill, PersonXFill, XLg } from 'react-bootstrap-icons';
+import { PersonDashFill, PersonPlusFill, } from 'react-bootstrap-icons';
 
 import "./teams.css";
 import "./teams_card.css";
@@ -102,6 +102,17 @@ export default function TeamDetails() {
 		setShowRemove(true);
 	}
 
+	async function handleApply(teamId) {
+		try {
+				const result = await teamApply(teamId, auth);
+				setTeam(result);
+				console.log(result);
+				// may add a modal to tell the user his application is pending
+		} catch (err) {
+				console.log(err);
+		}
+	}
+
 	return(
 		<>
 			<Modal className="modal_accept" show={showAccept} onHide={() => {handleClose('accept', false)}}>
@@ -162,6 +173,7 @@ export default function TeamDetails() {
 															<Image className="img-radius" src={team.image}/ >
 													</div>
 													<h5 className="f-w-600">{team.name}</h5>
+													{team.applicants?.some(a => a._id == auth._id) || team.members?.some(m => m._id == auth._id) ? null : <Button onClick={() => handleApply(teamId)}variant="success" size="sm">apply</Button>}													
 													<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
