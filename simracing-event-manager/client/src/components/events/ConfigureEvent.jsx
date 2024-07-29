@@ -7,17 +7,19 @@ export default function ConfigureEvent() {
 
     const { id } = useParams();
     const [event, setEvent] = useState();
+    const [config, setConfig] = useState({});
     
     useEffect(() => {
         (async function loadEvent() {
             const eventData = await getById(id);
             setEvent(eventData);
+            setConfig({aTemp: eventData.weather?.temp, cloudLevel: eventData.weather?.cloud, rainProbability: eventData.weather?.rain, eloMultiplier: eventData.eloMultiplier})
         })();
     }, []);
+    
 
-
-    function handleChange() {
-
+    function handleChange(e) {
+        setConfig(oldState => ({...oldState, [e.target.name] : e.target.value}))
     }
 
     return(
@@ -33,41 +35,32 @@ export default function ConfigureEvent() {
                         <Form>
                             <Form.Group className="mb-3" controlId="eventName">
                                 <Form.Label>Minumum license required</Form.Label>
-                                <Form.Control value={event?.minLicenseReq} type="text" name="name" placeholder="IRON, SILVER, GOLD..." />
+                                <Form.Select aria-label="Minimum license">
+                                    <option value="IRON">Iron</option>
+                                    <option value="SILVER">Silver</option>
+                                    <option value="GOLD">Gold</option>
+                                </Form.Select>
                                 <Form.Text className="text-muted">
                                     {/*{errors ? errors : null}*/}
                                 </Form.Text>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventDescription">
-                                <Form.Label>Elo multiplier</Form.Label>
-                                <Form.Control value={event?.eloMultiplier} type="number" name="description" placeholder="elo multiplier" />
-                                <Form.Text className="text-muted">
-                                    {/*{errors ? errors : null}*/}
-                                </Form.Text>
+                                <Form.Label>Elo multiplier - {config.eloMultiplier}</Form.Label>
+                                <Form.Range step={0.1} onChange={handleChange} name="eloMultiplier" min={0} max={2} value={config.eloMultiplier} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
-                                <Form.Label>Weather</Form.Label>
-                                <Form.Control
-                                    value={event?.weather.temp}
-                                    onChange={handleChange}
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Ambient temperature in °C" />
-                                <Form.Control
-                                    value={event?.weather.cloud}
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Cloud level in %" />
-                                <Form.Control
-                                    value={event?.weather.rain}
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Probability of rain in %" />
+                                <h5>Weather</h5>
+                          
+                                <Form.Label>Ambient temperature - {config.aTemp}°C</Form.Label>
+                                <Form.Range onChange={handleChange} name="aTemp" min={10} max={40} value={config.ambientTemp} />
+
+                                <Form.Label>Cloud level - {config.cloudLevel}%</Form.Label>
+                                <Form.Range onChange={handleChange} name="cloudLevel" min={0} max={100} value={config.cloudLevel} />
+
+                                <Form.Label>Probability of rain - {config.rainProbability}%</Form.Label>
+                                <Form.Range onChange={handleChange} name="rainProbability" min={0} max={100} value={config.rainProbability}/>
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
