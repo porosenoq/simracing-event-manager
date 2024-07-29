@@ -12,7 +12,8 @@ export default function TeamDetails() {
 	const { auth } = useContext(AuthContext);
 
 	const { teamId } = useParams();
-	const [team, setTeam] = useState({});
+	const [disableApply, setDisableApply] = useState(false);
+	const [team, setTeam] = useState({applicants: [{_id: auth._id}]});
 	const [showAccept, setShowAccept] = useState(false);
 	const [showDeny, setShowDeny] = useState(false);
 	const [showRemove, setShowRemove] = useState(false);
@@ -103,12 +104,14 @@ export default function TeamDetails() {
 	}
 
 	async function handleApply(teamId) {
+		setDisableApply(true);
 		try {
 				const result = await teamApply(teamId, auth);
 				setTeam(result);
 				console.log(result);
 				// may add a modal to tell the user his application is pending
 		} catch (err) {
+				setDisableApply(false);
 				console.log(err);
 		}
 	}
@@ -173,7 +176,7 @@ export default function TeamDetails() {
 															<Image className="img-radius" src={team.image}/ >
 													</div>
 													<h5 className="f-w-600">{team.name}</h5>
-													{team.applicants?.some(a => a._id == auth._id) || team.members?.some(m => m._id == auth._id) ? null : <Button onClick={() => handleApply(teamId)}variant="success" size="sm">apply</Button>}													
+													{team.applicants?.some(a => a._id == auth._id) || team.members?.some(m => m._id == auth._id) ? null : <Button disabled={disableApply} onClick={() => handleApply(teamId)}variant="success" size="sm">apply</Button>}													
 													<i className=" mdi mdi-square-edit-outline feather icon-edit m-t-10 f-16"></i>
 											</div>
 										</div>
