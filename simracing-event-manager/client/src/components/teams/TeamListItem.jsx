@@ -8,7 +8,7 @@ export default function TeamListItem({teamApplicationHandler, auth, team}) {
     const [isMember, setIsMember] = useState(false);
     const [isOwner, setIsOwner] = useState(false);
     const [applicants, setApplicants] = useState(team.applicants);
-    const [members, setMembers] = useState(team.members);
+    const [members] = useState(team.members);
 
     useEffect(() => {
         (async function getApplicants() {
