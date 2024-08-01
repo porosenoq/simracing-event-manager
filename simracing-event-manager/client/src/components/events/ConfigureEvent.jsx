@@ -54,7 +54,7 @@ export default function ConfigureEvent() {
                                 <h5>Weather</h5>
                           
                                 <Form.Label>Ambient temperature - {config.aTemp}°C</Form.Label>
-                                <Form.Range onChange={handleChange} name="aTemp" min={10} max={40} value={config.ambientTemp} />
+                                <Form.Range onChange={handleChange} max={40} step={1} name="aTemp" value={config.ambientTemp}/>
 
                                 <Form.Label>Cloud level - {config.cloudLevel}%</Form.Label>
                                 <Form.Range onChange={handleChange} name="cloudLevel" min={0} max={100} value={config.cloudLevel} />

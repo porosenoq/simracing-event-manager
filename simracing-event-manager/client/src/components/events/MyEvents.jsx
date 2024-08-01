@@ -5,6 +5,7 @@ import { CheckCircle, Gear, Trash } from 'react-bootstrap-icons';
 
 import AuthContext from '../../contexts/authContext';
 import { getMyEvents, getMySignedUpEvents } from '../../services/eventService';
+import EventDeleteModal from './EventDeleteModal';
 
 export default function MyEvents() {
 
@@ -12,6 +13,8 @@ export default function MyEvents() {
 
     const [myEvents, setMyEvents] = useState([]);
     const [mySignUps, setMySignUps] = useState([]);
+    const [showModal, setShowModal] = useState(false);
+    const [modalData, setModalData] = useState({});
 
     useEffect(() => {
         async function loadMyEvents() {
@@ -24,8 +27,17 @@ export default function MyEvents() {
         loadMyEvents();
     }, []);
 
+    function handleShowModal() {
+        setShowModal(true);
+    }
+
+    function handleCloseModal() {
+        setShowModal(false);
+    }
+
     return (
         <>
+            <EventDeleteModal showModal={showModal} hideModal={handleCloseModal} modalData={modalData}/>
             <Container className='bg-dark my-3 py-3 rounded'>
                 <Row>
                     <Col md={6}>
@@ -52,7 +64,7 @@ export default function MyEvents() {
                                             </Link>
                                         </ OverlayTrigger>
                                         <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Delete</Tooltip>}>
-                                            <Trash className="mx-1" color="#dc3545" size="24" />
+                                            <Trash className="mx-1" style={{cursor: 'pointer'}} onClick={() => {setModalData({id: e._id, name: e.name}); handleShowModal();}} color="#dc3545" size="24" />
                                         </OverlayTrigger>
                                     </Col>
                                 </Row>

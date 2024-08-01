@@ -87,6 +87,17 @@ export default function EventDetails() {
 
                   {auth._id && signedUpStatus && !isLoading && <Button onClick={eventSignOutHandler} variant="danger">Sign Out</Button>}
 
+									{signedUpStatus && !isFull && isLoading && 
+                    <Button disabled={isLoading} variant="danger">
+                      <Spinner
+                        as="span"
+                        animation="border"
+                        size="sm"
+                        role="status"
+                        aria-hidden="true"
+                      /> Loading...
+                    </ Button>}
+
                   {/* {isFull && !signedUpStatus && event.loaded && <><Button disabled variant="warning">Grid is currently full</Button></>} */}
 
 									{isFull && auth._id && <><Button disabled variant="warning">Grid is currently full</Button></>}
