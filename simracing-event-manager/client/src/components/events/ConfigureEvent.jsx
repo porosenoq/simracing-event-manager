@@ -86,41 +86,37 @@ export default function ConfigureEvent() {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
-                                <Form.Label>Pitstop</Form.Label>
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="pitstop..." />
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="pitstop..." />
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="pitstop..." />
+                                <p>Pitstop settings</p>
+                                <Form.Check // prettier-ignore
+                                    type="switch"
+                                    id="gt2"
+                                    label="Refueling required"
+                                    inline
+                                    name="category"
+                                    value="GT2"
+                                />
+                                <Form.Check // prettier-ignore
+                                    type="switch"
+                                    id="gt2"
+                                    label="Mandatory tyre change"
+                                    inline
+                                    name="category"
+                                    value="GT2"
+                                />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
-                                <Form.Label>Sessions length</Form.Label>
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Practice session length" />
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Qialification session length" />
-                                <Form.Control
-                                    className="mb-3"
-                                    type="text"
-                                    name="image"
-                                    placeholder="Race session length" />
+                            
+                                <Form.Label>Sessions length in minutes: </Form.Label>
+                                <p>Qualification {config.sessionLengthQ && <>{config.sessionLengthQ} min</>}</p>
+                                <Form.Range step={1} onChange={handleChange} name="sessionLengthQ" min={0} max={60} value={config.sessionLengthQ} />
+
+                                <p>Practice {config.sessionLengthP && <>{config.sessionLengthP} min</>}</p>
+                                <Form.Range step={1} onChange={handleChange} name="sessionLengthP" min={0} max={60} value={config.sessionLengthP} />
+
+                                <p>Race {config.sessionLengthR <= 60 && <>{config.sessionLengthR} min</>} {config.sessionLengthR && config.sessionLengthR > 60 && <>{Math.floor(config.sessionLengthR / 60)}h {config.sessionLengthR % 60} min</>}</p>
+                                <Form.Range step={1} onChange={handleChange} name="sessionLengthR" min={15} max={1440} value={config.sessionLengthR} />
+                            
                             </Form.Group>
 
                             <Button variant="success">Save configuration</Button>
