@@ -13,7 +13,7 @@ export default function ConfigureEvent() {
         (async function loadEvent() {
             const eventData = await getById(id);
             setEvent(eventData);
-            setConfig({aTemp: eventData.weather?.temp, cloudLevel: eventData.weather?.cloud, rainProbability: eventData.weather?.rain, eloMultiplier: eventData.eloMultiplier})
+            setConfig({aTemp: eventData.weather?.temp, cloudLevel: eventData.weather?.cloud, rainProbability: eventData.weather?.rain, eloMultiplier: eventData?.eloMultiplier, sessionLengthP: eventData.sessionsLength?.p, sessionLengthQ: eventData.sessionsLength?.q, sessionLengthR: eventData.sessionsLength?.r, pitWindow: eventData.pitStop?.pitWindow})
         })();
     }, []);
     
@@ -86,7 +86,9 @@ export default function ConfigureEvent() {
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
-                                <p>Pitstop settings</p>
+                                                                
+                                <Form.Label>Pitstop settings</Form.Label>
+                                <br />
                                 <Form.Check // prettier-ignore
                                     type="switch"
                                     id="gt2"
@@ -103,6 +105,10 @@ export default function ConfigureEvent() {
                                     name="category"
                                     value="GT2"
                                 />
+
+                                <p></p>
+                                <Form.Label>Pit window in minutes {config.pitWindow > config.sessionLengthR ? config.sessionLengthR : config.pitWindow}</Form.Label>
+                                <Form.Control onChange={handleChange} type="number" name="pitWindow" value={config.pitWindow} />
                             </Form.Group>
 
                             <Form.Group className="mb-3" controlId="eventImage">
@@ -114,7 +120,9 @@ export default function ConfigureEvent() {
                                 <p>Practice {config.sessionLengthP && <>{config.sessionLengthP} min</>}</p>
                                 <Form.Range step={1} onChange={handleChange} name="sessionLengthP" min={0} max={60} value={config.sessionLengthP} />
 
-                                <p>Race {config.sessionLengthR <= 60 && <>{config.sessionLengthR} min</>} {config.sessionLengthR && config.sessionLengthR > 60 && <>{Math.floor(config.sessionLengthR / 60)}h {config.sessionLengthR % 60} min</>}</p>
+                                <p>Race {config.sessionLengthR <= 60 && <>{config.sessionLengthR} min</>} {config.sessionLengthR && config.sessionLengthR > 60 && config.sessionLengthR % 60 != 0 && <>{Math.floor(config.sessionLengthR / 60)} h {config.sessionLengthR % 60} min</>}
+                                {config.sessionLengthR && config.sessionLengthR > 60 && config.sessionLengthR % 60 == 0 && <>{Math.floor(config.sessionLengthR / 60)} h</>}
+                                </p>
                                 <Form.Range step={1} onChange={handleChange} name="sessionLengthR" min={15} max={1440} value={config.sessionLengthR} />
                             
                             </Form.Group>
