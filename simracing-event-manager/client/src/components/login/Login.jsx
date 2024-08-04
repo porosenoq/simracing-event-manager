@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 
@@ -13,31 +13,33 @@ export default function Login() {
 
   return (
     <>
-    <h2>Login:</h2>
-    <Row className="mx-0">
-      <Col md={4} className='container py-5'>
-    <Form onSubmit={loginSubmitHandler}>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label>Email address</Form.Label>
-        <Form.Control type="email" name="email" placeholder="Enter email" />
-        <Form.Text className="text-muted">
-          {/*{errors ? errors : null}*/}
-        </Form.Text>
-      </Form.Group>
+    <Container className="bg-dark text-white my-3 py-3 rounded">
+      <h2>Login:</h2>
+      <Row className="mx-0">
+        <Col md={4} className='container py-5'>
+      <Form onSubmit={loginSubmitHandler}>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control type="email" name="email" placeholder="Enter email" />
+          <Form.Text className="text-muted">
+            {/*{errors ? errors : null}*/}
+          </Form.Text>
+        </Form.Group>
 
-      <Form.Group className="mb-3" controlId="formBasicPassword">
-        <Form.Label>Password</Form.Label>
-        <Form.Control type="password" name="password" placeholder="Password" />
-      </Form.Group>
-      <Form.Group className="mb-3" controlId="formBasicCheckbox">
-        <Form.Check type="checkbox" inline label="Remember me?" />
-      </Form.Group>
-      <Button variant="warning" type="submit">
-        Login
-      </Button>
-    </Form>
-      </Col>
-    </Row>
+        <Form.Group className="mb-3" controlId="formBasicPassword">
+          <Form.Label>Password</Form.Label>
+          <Form.Control type="password" name="password" placeholder="Password" />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicCheckbox">
+          <Form.Check type="checkbox" inline label="Remember me?" />
+        </Form.Group>
+        <Button variant="warning" type="submit">
+          Login
+        </Button>
+      </Form>
+        </Col>
+      </Row>
+    </Container>
     </>
   );
 }

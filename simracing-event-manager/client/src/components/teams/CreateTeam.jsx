@@ -1,4 +1,4 @@
-import { Button, Col, Form, Row } from 'react-bootstrap';
+import { Button, Col, Container, Form, Row } from 'react-bootstrap';
 import { create } from '../../services/teamService';
 import { useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
@@ -30,28 +30,30 @@ export default function CreateTeam() {
 
     return (
         <>
-    <h2>Create team:</h2>
-    <Row className="mx-0">
-      <Col md={4} className='container py-5'>
-    <Form onSubmit={submitHandler}>
-      <Form.Group className="mb-3" controlId="teamName">
-        <Form.Label>Team name</Form.Label>
-        <Form.Control type="text" name="name" placeholder="Enter team name" />
-        <Form.Text className="text-muted">
-          {/*{errors ? errors : null}*/}
-        </Form.Text>
-      </Form.Group>
+          <Container className="bg-dark text-white my-3 py-3 rounded">
+            <h2>Create team:</h2>
+            <Row className="mx-0">
+              <Col md={4} className='container py-5'>
+            <Form onSubmit={submitHandler}>
+              <Form.Group className="mb-3" controlId="teamName">
+                <Form.Label>Team name</Form.Label>
+                <Form.Control type="text" name="name" placeholder="Enter team name" />
+                <Form.Text className="text-muted">
+                  {/*{errors ? errors : null}*/}
+                </Form.Text>
+              </Form.Group>
 
-      <Form.Group className="mb-3" controlId="teamImage">
-        <Form.Label>Team avatar</Form.Label>
-        <Form.Control type="text" name="image" placeholder="URL to team avatar image" />
-      </Form.Group>
-      <Button variant="warning" type="submit">
-        Create team
-      </Button>
-    </Form>
-      </Col>
-    </Row>
+              <Form.Group className="mb-3" controlId="teamImage">
+                <Form.Label>Team avatar</Form.Label>
+                <Form.Control type="text" name="image" placeholder="URL to team avatar image" />
+              </Form.Group>
+              <Button variant="warning" type="submit">
+                Create team
+              </Button>
+            </Form>
+              </Col>
+            </Row>
+      </Container>
     </>
     );
 }
