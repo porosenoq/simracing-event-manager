@@ -113,7 +113,7 @@ export default function MyTeams() {
 
                     </Col>
                     <Col>
-                        <h4>Applicant in:</h4>
+                        <h4>Pending applications:</h4>
                         {applicantIn.length == 0 && <div className="my-3">You haven't applied to a team yet</div>}
                         <ListGroup>
                             {applicantIn.map(aTeam => 
