@@ -1,0 +1,7 @@
+.leave_team {
+    cursor: pointer;
+}
+
+.leave_team:hover {
+    font-size: large;
+}
