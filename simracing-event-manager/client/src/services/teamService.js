@@ -27,6 +27,11 @@ export async function update(id, data) {
     return result;
 }
 
+export async function updateAdmin(id, data) {
+    const result = await putAdmin(endpoints.teams + id, data);
+    return result;
+}
+
 export async function deleteById(id) {
     const result = await del(endpoints.teams + id);
     return result;

@@ -3,10 +3,10 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../contexts/authContext';
 import TeamModal from './TeamModal';
 
-import { Col, Container, ListGroup, ListGroupItem, Row } from 'react-bootstrap';
+import { Col, Container, ListGroup, ListGroupItem, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
 import { BoxArrowRight, XCircle } from 'react-bootstrap-icons';
 
-import { getAll } from '../../services/teamService';
+import { getAll, getById, updateAdmin } from '../../services/teamService';
 
 import "./my_teams.css";
 
@@ -18,28 +18,34 @@ export default function MyTeams() {
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState({});
     const [action, setAction] = useState('');
+    const [teamData, setTeamData] = useState([]);
+
+    useEffect(() => {
+        (async function initialLoad() {
+            const teams = await getAll();
+            setTeamData(teams);
+        })
+    }, []);
 
     useEffect(() => {
         (async function loadMyTeams() {
             const teams = await getAll();
-            const memberTeams = teams.filter(t => t.members.some(m => m._id == auth._id));
-            const applicantTeams = teams.filter(t => t.applicants.some(a => a._id == auth._id));
+            const temp_memberTeams = teams.filter(t => t.members.some(m => m._id == auth._id));
+            const temp_applicantTeams = teams.filter(t => t.applicants.some(a => a._id == auth._id));
 
-            setMemberIn(memberTeams);
-            setApplicantIn(applicantTeams);
+            setMemberIn(temp_memberTeams);
+            setApplicantIn(temp_applicantTeams);
         })();
-    }, []);
+    }, [teamData]);
 
-    async function leaveTeam(team, action) {
+    function handleLeaveClick(team, action) {
         setAction(action);
         handleShowModal(team);
-        console.log('leave team');
     }
 
-    async function cancelApplication(team, action) {
+    function handleCancelClick(team, action) {
         setAction(action);
         handleShowModal(team);
-        console.log('cancel application');
     }
 
     function handleShowModal(team) {
@@ -53,9 +59,39 @@ export default function MyTeams() {
         setShowModal(false);
     }
 
+    async function leaveTeam(id) {
+        try {
+            const team = await getById(id);
+            const teamMembers = [...team.members];
+            const memberToRemove = teamMembers.findIndex(m => m._id == auth._id);
+
+            teamMembers.splice(memberToRemove, 1);
+
+            await updateAdmin(id, {...team, members: teamMembers});
+            setTeamData(oldState => [...oldState, {members: teamMembers}]);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
+    async function cancelApplication(id) {
+        try {
+            const team = await getById(id);
+            const teamApplicants = [...team.applicants];
+            const applicantToRemove = teamApplicants.findIndex(a => a._id == auth._id);
+
+            teamApplicants.splice(applicantToRemove, 1);
+
+            await updateAdmin(id, {...team, applicants: teamApplicants})
+            setTeamData(oldState => [...oldState, {applicants: teamApplicants}]);
+        } catch (err) {
+            console.log(err);
+        }
+    }
+
     return(
         <>
-            <TeamModal showModal={showModal} hideModal={handleCloseModal} modalData={modalData} action={action}/>
+            <TeamModal showModal={showModal} hideModal={handleCloseModal} modalData={modalData} action={action} handlers={{leaveTeam, cancelApplication}}/>
             <Container className="text-white bg-dark my-3 py-3 rounded">
                 <Row>
                     <h3>My teams:</h3>
@@ -70,7 +106,7 @@ export default function MyTeams() {
                                     <Link to={`/teams/${mTeam._id}`} className="navbar-link">
                                         {mTeam.name}
                                     </Link>
-                                    <BoxArrowRight onClick={() => leaveTeam(mTeam, 'leave')} className="mx-2 leave_team" data-toggle="test" color="red"></BoxArrowRight>
+                                    {mTeam._ownerId != auth._id && <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Leave team</Tooltip>}><BoxArrowRight onClick={() => handleLeaveClick(mTeam, 'leave')} className="mx-2 leave_team" data-toggle="test" color="red"></BoxArrowRight></OverlayTrigger>}
                                 </ListGroupItem>)
                                 )}                            
                         </ListGroup>
@@ -85,7 +121,9 @@ export default function MyTeams() {
                                     <Link to={`/teams/${aTeam._id}`} className="navbar-link">
                                         {aTeam.name}
                                     </Link>
-                                    <XCircle onClick={() => cancelApplication(aTeam, 'cancel')} color="red" className="mx-2 leave_team"></XCircle>
+                                    <OverlayTrigger overlay={<Tooltip id="tooltip-disabled">Cancel application</Tooltip>}>
+                                    <XCircle onClick={() => handleCancelClick(aTeam, 'cancel')} color="red" className="mx-2 leave_team"></XCircle>
+                                    </OverlayTrigger>
                                 </ListGroupItem>)
                                 )}
                         </ListGroup>
