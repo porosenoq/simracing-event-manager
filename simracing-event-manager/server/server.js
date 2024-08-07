@@ -1363,7 +1363,7 @@
     			category: ["GT3"],
                 gridSize: 24,
                 subscribers: [],
-                minLicenseReq: 'IRON',
+                minLicenseReq: 'GOLD',
                 eloMultiplier: 1,
                 weather: {
                     temp: 20,
@@ -1378,9 +1378,9 @@
                 },
                 pitStop: {
                     refueling: {
-                        req: false,
-                        fixedTime: false,
-                        time: 0
+                        req: true,
+                        fixedTime: true,
+                        time: 25
                     },
                     tyreChange: {
                         req: false,

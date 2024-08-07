@@ -1,15 +1,19 @@
 import { useContext, useEffect, useState } from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { getById } from '../../services/eventService';
 import { Badge, Button, Card, Col, Container, Image, Row, Spinner, Table } from 'react-bootstrap';
+import { Gear } from 'react-bootstrap-icons';
 import AuthContext from '../../contexts/authContext';
 import useEventSignUp from '../../hooks/useEventSignUp';
 import Loading from './Loading';
+
+import './details_style.css'
 
 export default function EventDetails() {
 
     const { auth } = useContext(AuthContext);
     const {id} = useParams();
+    const navigate = useNavigate();
 
     const [event, setEvent] = useState({loaded: false});
     
@@ -49,7 +53,7 @@ export default function EventDetails() {
                   <Card.Title className="justify-content-between event_title">
                     <div>
                   {/* <Badge bg="success" className="session_number">Session #134985</Badge> */}
-                    <span className="event_title">{event?.name}</span>
+                    <span className="event_title">{event?.name} {event._ownerId == auth._id && <Gear onClick={() => navigate('/events/configure/' + id)} style={{float: 'right', cursor: 'pointer'}}/>}</span>
                     </div>
                   </Card.Title>
               
@@ -57,7 +61,7 @@ export default function EventDetails() {
                     <tbody className="event_table_body">
                       <tr className="tr_first">
                         <td>Min. License Req.</td>
-                        <td><Badge bg="secondary">{event?.minLicenseReq}</Badge></td>
+                        <td><Badge className={event.minLicenseReq == 'IRON' && 'bronze' || event.minLicenseReq == 'SILVER' && 'silver' || event.minLicenseReq == 'GOLD' && 'gold'}>{event?.minLicenseReq}</Badge></td>
                       </tr>
                       <tr>
                         <td>Elo multiplier</td>
@@ -73,7 +77,7 @@ export default function EventDetails() {
                       </tr>
                       <tr>
                         <td>Pitstop</td>
-                        <td>Refueling required: {event.pitStop?.refueling?.req ? 'Yes' : 'No'}, {event.pitStop?.refueling?.fixedTime ? `Refueling time fixed (${event.pitStop?.refueling?.fixedTime} sec.), ` : null}Pit window {event.pitStop?.pitWindow} min.</td>
+                        <td>Refueling: {event.pitStop?.refueling?.req ? 'Yes' : 'No'}, {event.pitStop?.refueling?.fixedTime ? `Fixed time (${event.pitStop?.refueling?.time} sec.), ` : null} {event.pitStop?.tyreChange && 'Tyre change - yes, '}Pit window {event.pitStop?.pitWindow} min.</td>
                       </tr>
                       <tr>
                         <td>Sessions</td>
