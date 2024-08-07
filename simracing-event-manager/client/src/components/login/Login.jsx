@@ -7,7 +7,7 @@ import AuthContext from '../../contexts/authContext';
 
 export default function Login() {
   
-  const {loginSubmitHandler} = useContext(AuthContext);
+  const {loginSubmitHandler, errors} = useContext(AuthContext);
     
   //const [errors, setErrors] = useState('');
 
@@ -23,16 +23,19 @@ export default function Login() {
           <Form.Control type="email" name="email" placeholder="Enter email" />
           <Form.Text className="text-muted">
             {/*{errors ? errors : null}*/}
+            {errors.email ? errors.email : null}
           </Form.Text>
         </Form.Group>
 
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control type="password" name="password" placeholder="Password" />
+          <Form.Text className="text-muted">
+            {/*{errors ? errors : null}*/}
+            {errors.password ? errors.password : null}
+          </Form.Text>
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" inline label="Remember me?" />
-        </Form.Group>
+        
         <Button variant="warning" type="submit">
           Login
         </Button>

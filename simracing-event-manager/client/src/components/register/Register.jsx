@@ -4,7 +4,7 @@ import AuthContext from '../../contexts/authContext';
 
 export default function Register() {
 
-  const { registerSubmitHandler } = useContext(AuthContext);
+  const { registerSubmitHandler, errors } = useContext(AuthContext);
 
     return (
         <>
@@ -29,6 +29,10 @@ export default function Register() {
           <Form.Group className="mb-3" controlId="repass">
             <Form.Label>Repeat password</Form.Label>
             <Form.Control type="password" name="repass" placeholder="Repeat password" />
+            <Form.Text className="text-muted">
+              {/* errors */}
+              {Object.values(errors).map(error => <>{error}<br/></>)}
+            </Form.Text>
           </Form.Group>
 
           <Button variant="warning" type="submit">
