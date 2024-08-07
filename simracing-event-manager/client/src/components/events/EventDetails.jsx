@@ -4,6 +4,7 @@ import { getById } from '../../services/eventService';
 import { Badge, Button, Card, Col, Container, Image, Row, Spinner, Table } from 'react-bootstrap';
 import AuthContext from '../../contexts/authContext';
 import useEventSignUp from '../../hooks/useEventSignUp';
+import Loading from './Loading';
 
 export default function EventDetails() {
 
@@ -14,12 +15,21 @@ export default function EventDetails() {
     
     const [isLoading, signedUpStatus, setSignedUpStatus, eventSignUpHandler, eventSignOutHandler] = useEventSignUp(event, auth._id);
 
+    const [loading, setLoading] = useState(false);
+
     useEffect(() => {
       async function loadEvent() {
-        const event = await getById(id);
-        const alreadySubscribed = event.subscribers?.some(s => s._id == auth._id);
-        setSignedUpStatus(alreadySubscribed);
-        setEvent(event);
+        setLoading(true);
+        try {
+          const event = await getById(id);
+          const alreadySubscribed = event.subscribers?.some(s => s._id == auth._id);
+          setSignedUpStatus(alreadySubscribed);
+          setEvent(event);
+          setLoading(false);
+        } catch (err) {
+          setLoading(false);
+          console.log(err);
+        }
       }
       loadEvent();
     }, []);
@@ -28,8 +38,8 @@ export default function EventDetails() {
 
     return (
       <>    
-        <Container className="p-3">
-          <Card className="text-white bg-dark">
+        <Container className="my-3 rounded">
+          {loading ? <Loading /> : <Card className="text-white bg-dark">
             <Row>
               <Col md={5}>            
                 <Image src={event?.image} className="event_image"/>
@@ -107,7 +117,8 @@ export default function EventDetails() {
                 </Card.Body>
                 </Col>
               </Row>
-          </Card>
+          </Card> }
+          
         </Container>
       </>
     );
