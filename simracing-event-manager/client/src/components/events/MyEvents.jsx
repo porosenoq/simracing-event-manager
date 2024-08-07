@@ -6,6 +6,7 @@ import { CheckCircle, Gear, Trash } from 'react-bootstrap-icons';
 import AuthContext from '../../contexts/authContext';
 import { getMyEvents, getMySignedUpEvents } from '../../services/eventService';
 import EventDeleteModal from './EventDeleteModal';
+import Loading from './Loading';
 
 export default function MyEvents() {
 
@@ -15,14 +16,24 @@ export default function MyEvents() {
     const [mySignUps, setMySignUps] = useState([]);
     const [showModal, setShowModal] = useState(false);
     const [modalData, setModalData] = useState({});
+    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         async function loadMyEvents() {
-            const myEventsData = await getMyEvents(auth._id);
-            setMyEvents(myEventsData);
+            setIsLoading(true);
+            try {
+                const myEventsData = await getMyEvents(auth._id);
+                setMyEvents(myEventsData);
 
-            const mySignUpsData = await getMySignedUpEvents(auth._id);
-            setMySignUps(mySignUpsData);
+                const mySignUpsData = await getMySignedUpEvents(auth._id);
+                setMySignUps(mySignUpsData);
+
+                setIsLoading(false);
+            } catch (err) {
+                console.log(err);
+                setIsLoading(false);
+            }
+
         }
         loadMyEvents();
     }, []);
@@ -39,7 +50,7 @@ export default function MyEvents() {
         <>
             <EventDeleteModal showModal={showModal} hideModal={handleCloseModal} modalData={modalData}/>
             <Container className='bg-dark my-3 py-3 rounded'>
-                <Row>
+                {isLoading ? <Loading /> : <Row>
                     <Col md={6}>
                         <h2>My events:</h2>
                         <Row className="py-3">
@@ -100,7 +111,8 @@ export default function MyEvents() {
                             </>
                         }
                     </Col>
-                </Row>
+                </Row>}
+                
             </Container>
         </>
     );
