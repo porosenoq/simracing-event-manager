@@ -43,30 +43,35 @@ export default function CreateEvent() {
 
         if(!eventData.name) {
           setErrors(oldState => ({...oldState, name: 'Name is required!'}));
+          return
         } else {
           setErrors(oldState => ({...oldState, name: null}));
         }
 
         if(!eventData.description) {
           setErrors(oldState => ({...oldState, description: 'Description can not be empty!'}));
+          return
         } else {
           setErrors(oldState => ({...oldState, description: null}));
         }
 
         if(!eventData.image) {
           setErrors(oldState => ({...oldState, image: 'Image can not be empty!'}));
+          return
         } else {
           setErrors(oldState => ({...oldState, image: null}));
         }
 
         if(!eventData.track) {
           setErrors(oldState => ({...oldState, track: 'Please select a track!'}));
+          return
         } else {
           setErrors(oldState => ({...oldState, track: null}));
         }
 
         if(eventData.category.length == 0) {
           setErrors(oldState => ({...oldState, category: 'Please select at least one car category!'}));
+          return
         } else {
           setErrors(oldState => ({...oldState, category: null}));
         }
