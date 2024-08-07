@@ -14,6 +14,7 @@ export default function CreateEvent() {
   const navigate = useNavigate();
 
   const [showDriverStintTime, setShowDriverStintTime] = useState(false);
+  const [errors, setErrors] = useState({});
 
     const submitHandler = async (e) => {
         e.preventDefault();
@@ -39,6 +40,43 @@ export default function CreateEvent() {
           
           pitWindow: 43
         };
+
+        if(!eventData.name) {
+          setErrors(oldState => ({...oldState, name: 'Name is required!'}));
+        } else {
+          setErrors(oldState => ({...oldState, name: null}));
+        }
+
+        if(!eventData.description) {
+          setErrors(oldState => ({...oldState, description: 'Description can not be empty!'}));
+        } else {
+          setErrors(oldState => ({...oldState, description: null}));
+        }
+
+        if(!eventData.image) {
+          setErrors(oldState => ({...oldState, image: 'Image can not be empty!'}));
+        } else {
+          setErrors(oldState => ({...oldState, image: null}));
+        }
+
+        if(!eventData.track) {
+          setErrors(oldState => ({...oldState, track: 'Please select a track!'}));
+        } else {
+          setErrors(oldState => ({...oldState, track: null}));
+        }
+
+        if(eventData.category.length == 0) {
+          setErrors(oldState => ({...oldState, category: 'Please select at least one car category!'}));
+        } else {
+          setErrors(oldState => ({...oldState, category: null}));
+        }
+
+        if(!eventData.gridSize || eventData.gridSize <= 0) {
+          setErrors(oldState => ({...oldState, gridSize: 'Grid size must be a positive number and can not be empty!'}));
+          return
+        } else {
+          setErrors(oldState => ({...oldState, gridSize: null}));
+        }
 
         try {
           const createdEvent = await create(eventData);
@@ -66,13 +104,13 @@ export default function CreateEvent() {
         <Row className="mx-0">
           <Col md={5} className='container py-5'>
             
-            <EventInfoInputs />
+            <EventInfoInputs errors={errors}/>
 
-            <EventTrackSelect />
+            <EventTrackSelect errors={errors}/>
 
-            <EventCarCategories />
+            <EventCarCategories errors={errors}/>
 
-            <EventGridSize />
+            <EventGridSize errors={errors}/>
 
             <EventType changeHandler={eventTypeChangeHandler} />
 

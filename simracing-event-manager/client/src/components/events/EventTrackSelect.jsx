@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import { get } from '../../utils/request';
 
-export default function EventTrackSelect() {
+export default function EventTrackSelect({errors}) {
     
     const [tracks, setTracks] = useState([]);
 
@@ -20,6 +20,9 @@ export default function EventTrackSelect() {
                 <option value=''>select track</option>
                 {tracks?.map(t => <option key={t.name} value={t.name}>{t.name}</option>)}
             </Form.Select>
+            <Form.Text className="text-muted">
+  {errors.track}
+              </Form.Text>
         </Form.Group>
     );
 }

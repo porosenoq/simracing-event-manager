@@ -1,6 +1,6 @@
 import { Col, Form, Row } from 'react-bootstrap';
 
-export default function EventCarCategories() {
+export default function EventCarCategories({errors}) {
     return (
         <>
         <Form.Group>
@@ -50,6 +50,9 @@ export default function EventCarCategories() {
                     />
                 </Col>
                 </Row>
+                <Form.Text className="text-muted">
+  {errors.category}
+              </Form.Text>
               </Form.Group>
         </>
     );
