@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Col, Container, OverlayTrigger, Row, Tooltip } from 'react-bootstrap';
-import { CheckCircle, Gear, Trash } from 'react-bootstrap-icons';
+import { Gear, Trash } from 'react-bootstrap-icons';
 
 import AuthContext from '../../contexts/authContext';
 import { getMyEvents, getMySignedUpEvents } from '../../services/eventService';

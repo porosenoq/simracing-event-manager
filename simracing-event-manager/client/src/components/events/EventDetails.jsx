@@ -73,7 +73,7 @@ export default function EventDetails() {
                       </tr>
                       <tr>
                         <td>Ingame Times</td>
-                        <td>P {event.ingameTimes?.p}| Q {event.ingameTimes?.q}| R {event.ingameTimes?.r}</td>
+                        <td>P {event.ingameTimes?.p} | Q {event.ingameTimes?.q} | R {event.ingameTimes?.r}</td>
                       </tr>
                       <tr>
                         <td>Pitstop</td>
